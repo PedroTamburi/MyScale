@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/MyScale.Domain/" />
+  <Folder Name="/MyScale.Domain/Base/" />
+  <Folder Name="/MyScale.Domain/Entities/" />
+  <Folder Name="/MyScale.test/" />
+  <Folder Name="/MyScaleRepository/" />
+  <Folder Name="/MyScaleRepository/Context/" />
+</Solution>
