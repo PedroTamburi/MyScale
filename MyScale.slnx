@@ -1,8 +1,5 @@
 <Solution>
-  <Folder Name="/MyScale.Domain/" />
-  <Folder Name="/MyScale.Domain/Base/" />
-  <Folder Name="/MyScale.Domain/Entities/" />
-  <Folder Name="/MyScale.test/" />
-  <Folder Name="/MyScaleRepository/" />
-  <Folder Name="/MyScaleRepository/Context/" />
+  <Project Path="MyScale.Domain/MyScale.Domain.csproj" Id="12ee5fc4-bff3-4cd5-8948-cf0b1b89562f" />
+  <Project Path="MyScale.Repository/MyScale.Repository.csproj" Id="9187114b-d471-4ed5-a9a0-e188d941c638" />
+  <Project Path="MyScale.Service/MyScale.Service.csproj" Id="8a0ca5b2-f496-454c-b4cf-ea5a66183f19" />
 </Solution>
