@@ -11,11 +11,11 @@ public class MedicalShift : BaseEntity<int>
 
     // hospital relationship
     public int HospitalId { get; set; }
-    public virtual Hospital Hospital { get; set; }
+    public Hospital Hospital { get; set; }
 
     // health agent relationship
     public int? HealthAgentId { get; set; }
-    public virtual HealthAgent HealthAgent { get; set; }
+    public HealthAgent HealthAgent { get; set; }
 
     public bool IsOpen => HealthAgentId == null;
 
