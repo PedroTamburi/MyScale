@@ -36,6 +36,6 @@ public class MedicalShift : BaseEntity<int>
     public void AssignAgent(int agentId)
     {
         HealthAgentId = agentId;
-        
+
     }
 }

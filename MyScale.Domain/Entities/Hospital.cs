@@ -10,7 +10,7 @@ public class Hospital : BaseEntity<int>
     public DateOnly FoundationDate { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
-    public string Login { get; set; }
+    public string Username { get; set; }
     public DateTime RegisterDate { get; set; }
     public DateTime LoginDate { get; set; }
     public bool IsActive { get; set; }
@@ -23,7 +23,7 @@ public class Hospital : BaseEntity<int>
         Address  = new Address();
     }
 
-    public Hospital(int id, string name,string municipalRegistry, string cnpj, DateOnly foundationDate, string password, string login, string email, DateTime registerDate, DateTime loginDate, bool isActive)
+    public Hospital(int id, string name,string municipalRegistry, string cnpj, DateOnly foundationDate, string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
         : base(id)
     {
         Name = name;
@@ -32,7 +32,7 @@ public class Hospital : BaseEntity<int>
         CNPJ = cnpj;
         Email = email;
         Password = password;
-        Login = login;
+        Username = username;
         RegisterDate = registerDate;
         LoginDate = loginDate;
         IsActive = isActive;
