@@ -15,12 +15,14 @@ public class Hospital : BaseEntity<int>
     public DateTime LoginDate { get; set; }
     public bool IsActive { get; set; }
     public Address Address { get; set; }
+    public virtual ICollection<MedicalShift> Shifts { get; set; }
 
 
 
     public Hospital()
     {
         Address  = new Address();
+        Shifts = new List<MedicalShift>();
     }
 
     public Hospital(int id, string name,string municipalRegistry, string cnpj, DateOnly foundationDate, string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
@@ -38,5 +40,6 @@ public class Hospital : BaseEntity<int>
         IsActive = isActive;
 
         Address = new Address();
+        Shifts = new List<MedicalShift>();
     }
 }

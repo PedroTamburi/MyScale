@@ -14,10 +14,12 @@ public class HealthAgent : BaseEntity<int>
     public DateTime LoginDate { get; set; }
     public bool IsActive { get; set; }
     public Address Address { get; set; }
+    public virtual ICollection<MedicalShift> Shifts { get; set; }
 
     public HealthAgent()
     {
         Address = new Address();
+        Shifts = new List<MedicalShift>();
     }
 
     public HealthAgent(int id, string name, DateOnly birthDate, string document,  string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
@@ -34,5 +36,6 @@ public class HealthAgent : BaseEntity<int>
         IsActive = isActive;
 
         Address = new Address();
+        Shifts = new List<MedicalShift>();
     }
 }
