@@ -19,7 +19,7 @@ public class HospitalMap : IEntityTypeConfiguration<Hospital>
 
     public void Configure(EntityTypeBuilder<Hospital> builder)
     {
-        builder.ToTable("HealthAgents");
+        builder.ToTable("Hospitals");
 
         builder.HasKey(c => c.Id);
 
@@ -37,6 +37,10 @@ public class HospitalMap : IEntityTypeConfiguration<Hospital>
         builder.Property(c => c.FoundationDate)
             .IsRequired();
 
+        builder.Property(c => c.CNPJ)
+            .IsRequired()
+            .HasMaxLength(18);
+
         builder.Property(c => c.Email)
             .IsRequired()
             .HasMaxLength(100);
@@ -50,7 +54,7 @@ public class HospitalMap : IEntityTypeConfiguration<Hospital>
             .HasMaxLength(45);
 
         builder.Property(c => c.RegisterDate)
-            .HasDefaultValue("GETDATE()");
+            .HasDefaultValueSql("GETDATE()");
 
         builder.Property(c => c.IsActive)
             .HasDefaultValue(true);
@@ -60,7 +64,7 @@ public class HospitalMap : IEntityTypeConfiguration<Hospital>
             addr.ConfigureAddress(); // usa o metodo do extension para criar as propriedades do endereco
         });
 
-        builder.HasMany(h => h.MedicalShifts)
+        builder.HasMany(h => h.Shifts)
             .WithOne(s => s.Hospital)
             .HasForeignKey(s => s.HospitalId)
             .OnDelete(DeleteBehavior.Restrict);

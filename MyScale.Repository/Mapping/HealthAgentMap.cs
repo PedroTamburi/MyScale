@@ -50,7 +50,7 @@ public class HealthAgentMap : IEntityTypeConfiguration<HealthAgent>
             .HasMaxLength(45);
 
         builder.Property(c => c.RegisterDate)
-            .HasDefaultValue("GETDATE()");
+            .HasDefaultValueSql("GETDATE()");
 
         builder.Property(c => c.IsActive)
             .HasDefaultValue(true);
@@ -60,7 +60,7 @@ public class HealthAgentMap : IEntityTypeConfiguration<HealthAgent>
            addr.ConfigureAddress();
         });
 
-        builder.HasMany(h => h.MedicalShifts)
+        builder.HasMany(h => h.Shifts)
             .WithOne(s => s.HealthAgent)
             .HasForeignKey(s => s.HealthAgentId)
             .OnDelete(DeleteBehavior.Restrict);
