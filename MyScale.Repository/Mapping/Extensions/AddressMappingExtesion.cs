@@ -15,6 +15,7 @@ public static class AddressMappingExtension
         builder.Property(p => p.Neighborhood).HasColumnName("Address_Neighborhood").HasMaxLength(100).IsRequired();
         builder.Property(p => p.City).HasColumnName("Address_City").HasMaxLength(100).IsRequired();
         builder.Property(p => p.State).HasColumnName("Address_State").HasMaxLength(2).IsRequired();
+        builder.Property(p => p.ZipCode).HasColumnName("Address_ZipCode").HasMaxLength(20).IsRequired();
         builder.Property(p => p.Complement).HasColumnName("Address_Complement").HasMaxLength(100).IsRequired(false);
     }
 }
