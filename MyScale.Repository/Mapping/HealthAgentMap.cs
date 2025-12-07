@@ -50,7 +50,7 @@ public class HealthAgentMap : IEntityTypeConfiguration<HealthAgent>
             .HasMaxLength(45);
 
         builder.Property(c => c.RegisterDate)
-            .HasDefaultValueSql("GETDATE()");
+            .IsRequired();
 
         builder.Property(c => c.IsActive)
             .HasDefaultValue(true);

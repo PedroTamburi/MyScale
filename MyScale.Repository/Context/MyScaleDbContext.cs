@@ -6,14 +6,17 @@ namespace MyScale.Repository.Context;
 
 public class MyScaleDbContext : DbContext
 {
-    public MyScaleDbContext(DbContextOptions<MyScaleDbContext>? options = null) : base(options)
+    public MyScaleDbContext(DbContextOptions<MyScaleDbContext> options) : base(options)
     {
-        Database.EnsureCreated();
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=MyScaleDB;User ID=developer;Password=123456789");
     }
 
-    public DbSet<Address> HealthAgents { get; set; }
-    public DbSet<HealthAgent> Hospitals { get; set; }
-    public DbSet<Hospital> MedicalShifts { get; set; }
+    public DbSet<HealthAgent> HealthAgents { get; set; }
+    public DbSet<Hospital> Hospitals { get; set; }
+    public DbSet<MedicalShift> MedicalShifts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

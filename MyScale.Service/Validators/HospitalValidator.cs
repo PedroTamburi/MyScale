@@ -37,8 +37,6 @@ namespace MyScale.Service.Validators
             RuleFor(agent => agent.Username)
                 .NotEmpty().WithMessage("Username is required.")
                 .MaximumLength(50).WithMessage("Username cannot exceed 50 characters.");
-            
-            //SHIFTS
         }
 }
 }

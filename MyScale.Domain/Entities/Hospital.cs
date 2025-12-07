@@ -11,8 +11,8 @@ public class Hospital : BaseEntity<int>
     public string Email { get; set; }
     public string Password { get; set; }
     public string Username { get; set; }
-    public DateTime RegisterDate { get; set; }
-    public DateTime LoginDate { get; set; }
+    public DateTime RegisterDate { get; set; } = DateTime.Now;
+    public DateTime? LoginDate { get; set; }
     public bool IsActive { get; set; }
     public Address Address { get; set; }
     public virtual ICollection<MedicalShift> Shifts { get; set; }
