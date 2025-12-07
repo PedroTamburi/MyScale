@@ -17,4 +17,8 @@
     <Folder Include="Register\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ReaLTaiizor" Version="3.8.1.4" />
+  </ItemGroup>
+
 </Project>
