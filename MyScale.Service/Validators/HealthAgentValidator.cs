@@ -20,9 +20,13 @@ namespace MyScale.Service.Validators
                 .EmailAddress().WithMessage("Invalid email format.")
                 .MaximumLength(100).WithMessage("Email cannot exceed 100 characters.");
 
-            RuleFor(agent => agent.Password)
+            RuleFor(h => h.Password)
                 .NotEmpty().WithMessage("Password is required.")
-                .WithMessage("Password cannot be empty.");
+                .MinimumLength(8).WithMessage("The password must be at least 8 characters long.")
+                .Matches(@"[A-Z]").WithMessage("The password should contain at least 1 uppercase character.")
+                .Matches(@"[a-z]").WithMessage("The password must contain at least one lowercase letter.")
+                .Matches(@"[0-9]").WithMessage("The password must contain at least one number.")
+                .Matches(@"[\W]").WithMessage("The password must contain at least one special character (!? *.).");
 
             RuleFor(agent => agent.Username)
                 .NotEmpty().WithMessage("Username is required.")
