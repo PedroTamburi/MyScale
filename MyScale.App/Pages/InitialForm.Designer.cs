@@ -135,8 +135,9 @@
             foreverBtnRegister.Rounded = false;
             foreverBtnRegister.Size = new Size(155, 25);
             foreverBtnRegister.TabIndex = 3;
-            foreverBtnRegister.Text = "Increver-se";
+            foreverBtnRegister.Text = "Registrar";
             foreverBtnRegister.TextColor = Color.Black;
+            foreverBtnRegister.Click += foreverBtnRegister_Click;
             // 
             // tableLayoutPanel7
             // 

@@ -30,6 +30,8 @@ namespace MyScale.Service.Validators
 
             RuleFor(agent => agent.BirthDate)
                 .LessThan(DateOnly.FromDateTime(DateTime.Now)).WithMessage("BirthDate must be in the past.");
+
+            RuleFor(h => h.Address).SetValidator(new AddressValidator());
         }
     }
 }

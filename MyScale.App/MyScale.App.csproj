@@ -9,7 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.0" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyScale.Domain\MyScale.Domain.csproj" />
+    <ProjectReference Include="..\MyScale.Repository\MyScale.Repository.csproj" />
+    <ProjectReference Include="..\MyScale.Service\MyScale.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,8 @@
-﻿using ReaLTaiizor.Forms;
-using ReaLTaiizor.Manager;
+﻿using MyScale.Domain.Base;
+using MyScale.Domain.Entities;
 using ReaLTaiizor.Colors;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Manager;
 using ReaLTaiizor.Util;
 
 namespace MyScale.App.Pages
@@ -8,46 +10,20 @@ namespace MyScale.App.Pages
 
     public partial class InitialForm : MaterialForm
     {
-        /// <summary>
-        /// Centraliza o controle apenas na linha horizontal (Esquerda <-> Direita)
-        /// Mantém a altura (Y) onde ela já estava.
-        /// </summary>
-        private void CentralizarHorizontalmente(Control controle)
-        {
-            if (controle == null) return;
-
-            // A conta é: (Largura da Janela - Largura do Controle) / 2
-            int x = (this.ClientSize.Width - controle.Width) / 2;
-
-            // Atualiza apenas o Left (X), mantém o Top (Y) original
-            controle.Left = x;
-        }
-
-        /// <summary>
-        /// Centraliza o controle apenas na linha vertical (Topo <-> Baixo)
-        /// Mantém a posição lateral (X) onde ela já estava.
-        /// </summary>
-        private void CentralizarVerticalmente(Control controle)
-        {
-            if (controle == null) return;
-
-            // A conta é: (Altura da Janela - Altura do Controle) / 2
-            int y = (this.ClientSize.Height - controle.Height) / 2;
-
-            // Atualiza apenas o Top (Y), mantém o Left (X) original
-            controle.Top = y;
-        }
         private readonly MaterialSkinManager materialSkinManager;
-        public InitialForm()
+        private readonly IBaseRepository<Hospital> _hospitalRepository;
+        private readonly IBaseRepository<HealthAgent> _agentRepository;
+        public InitialForm(IBaseRepository<Hospital> hospitalRepository,IBaseRepository<HealthAgent> agentRepository)
         {
             InitializeComponent();
 
+            _hospitalRepository = hospitalRepository;
+            _agentRepository = agentRepository;
+
+            //tela 
             materialSkinManager = MaterialSkinManager.Instance;
-
             materialSkinManager.AddFormToManage(this);
-
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-
             materialSkinManager.ColorScheme = new MaterialColorScheme(
                 MaterialPrimary.Teal500,
                 MaterialPrimary.Teal700,
@@ -56,6 +32,15 @@ namespace MyScale.App.Pages
                 MaterialTextShade.WHITE
             );
 
+        }
+
+        private void foreverBtnRegister_Click(object sender, EventArgs e)
+        {
+            using (var registerForm = new RegisterForm(_hospitalRepository, _agentRepository))
+            {
+                registerForm.ShowDialog();
+            }
+            this.Show();
         }
     }
 }

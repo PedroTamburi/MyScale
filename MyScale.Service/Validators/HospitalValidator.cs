@@ -4,7 +4,7 @@ using MyScale.Domain.Entities;
 
 namespace MyScale.Service.Validators 
 {
-    internal class HospitalValidator : AbstractValidator<Hospital>
+    public class HospitalValidator : AbstractValidator<Hospital>
     {
         public HospitalValidator()
         {
@@ -37,6 +37,8 @@ namespace MyScale.Service.Validators
             RuleFor(agent => agent.Username)
                 .NotEmpty().WithMessage("Username is required.")
                 .MaximumLength(50).WithMessage("Username cannot exceed 50 characters.");
+
+            RuleFor(h => h.Address).SetValidator(new AddressValidator());
         }
 }
 }
