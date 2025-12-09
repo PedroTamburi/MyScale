@@ -29,10 +29,10 @@ namespace MyScale.App
                 // 3. Pede para o provedor criar o InitialForm.
                 // O provedor vai ver que o InitialForm precisa de repositórios
                 // e vai injetá-los automaticamente.
-                var initialForm = serviceProvider.GetRequiredService<InitialForm>();
+                var LoginForm = serviceProvider.GetRequiredService<LoginForm>();
 
                 // 4. Roda a aplicação
-                Application.Run(initialForm);
+                Application.Run(LoginForm);
             }
         }
 
@@ -62,7 +62,7 @@ namespace MyScale.App
 
             // --- E. FORMULÁRIOS ---
             // Importante: Registre TODOS os forms que usam injeção
-            services.AddTransient<InitialForm>();
+            services.AddTransient<LoginForm>();
             services.AddTransient<RegisterForm>();
             // services.AddTransient<LoginForm>(); // Quando criar o login
 

@@ -64,7 +64,7 @@ namespace MyScale.App.Pages
             foxLabel1.BackColor = Color.Transparent;
             foxLabel1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             foxLabel1.ForeColor = Color.FromArgb(76, 88, 100);
-            foxLabel1.Location = new Point(6, 77);
+            foxLabel1.Location = new Point(6, 48);
             foxLabel1.Name = "foxLabel1";
             foxLabel1.Size = new Size(196, 19);
             foxLabel1.TabIndex = 0;
@@ -83,7 +83,7 @@ namespace MyScale.App.Pages
             radioHealthAgent.Font = new Font("Segoe UI", 10F);
             radioHealthAgent.ForeColor = Color.FromArgb(66, 78, 90);
             radioHealthAgent.HoverBorderColor = Color.FromArgb(44, 156, 218);
-            radioHealthAgent.Location = new Point(6, 102);
+            radioHealthAgent.Location = new Point(6, 73);
             radioHealthAgent.Name = "radioHealthAgent";
             radioHealthAgent.Size = new Size(138, 21);
             radioHealthAgent.TabIndex = 3;
@@ -103,7 +103,7 @@ namespace MyScale.App.Pages
             radioHospital.Font = new Font("Segoe UI", 10F);
             radioHospital.ForeColor = Color.FromArgb(66, 78, 90);
             radioHospital.HoverBorderColor = Color.FromArgb(44, 156, 218);
-            radioHospital.Location = new Point(6, 129);
+            radioHospital.Location = new Point(6, 100);
             radioHospital.Name = "radioHospital";
             radioHospital.Size = new Size(138, 21);
             radioHospital.TabIndex = 4;
@@ -119,7 +119,7 @@ namespace MyScale.App.Pages
             txtName.Font = new Font("Segoe UI", 12F);
             txtName.ForeColor = Color.Black;
             txtName.Hint = "Nome";
-            txtName.Location = new Point(6, 156);
+            txtName.Location = new Point(6, 128);
             txtName.MaxLength = 32767;
             txtName.Multiline = false;
             txtName.Name = "txtName";
@@ -142,7 +142,7 @@ namespace MyScale.App.Pages
             txtEmail.Font = new Font("Segoe UI", 12F);
             txtEmail.ForeColor = Color.FromArgb(48, 49, 51);
             txtEmail.Hint = "Email";
-            txtEmail.Location = new Point(6, 200);
+            txtEmail.Location = new Point(6, 172);
             txtEmail.MaxLength = 32767;
             txtEmail.Multiline = false;
             txtEmail.Name = "txtEmail";
@@ -165,7 +165,7 @@ namespace MyScale.App.Pages
             txtUsername.Font = new Font("Segoe UI", 12F);
             txtUsername.ForeColor = Color.FromArgb(48, 49, 51);
             txtUsername.Hint = "Login (nome de usuário)";
-            txtUsername.Location = new Point(317, 156);
+            txtUsername.Location = new Point(317, 128);
             txtUsername.MaxLength = 32767;
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
@@ -188,7 +188,7 @@ namespace MyScale.App.Pages
             txtSenha.Font = new Font("Segoe UI", 12F);
             txtSenha.ForeColor = Color.FromArgb(48, 49, 51);
             txtSenha.Hint = "Senha";
-            txtSenha.Location = new Point(6, 244);
+            txtSenha.Location = new Point(6, 216);
             txtSenha.MaxLength = 32767;
             txtSenha.Multiline = false;
             txtSenha.Name = "txtSenha";
@@ -204,14 +204,14 @@ namespace MyScale.App.Pages
             // 
             // pnlHospital
             // 
-            pnlHospital.BackColor = Color.WhiteSmoke;
+            pnlHospital.BackColor = Color.White;
             pnlHospital.Controls.Add(labelMunicipalRegistry);
             pnlHospital.Controls.Add(labelCNPJ);
             pnlHospital.Controls.Add(txtCNPJ);
             pnlHospital.Controls.Add(txtMuniciaplRegistry);
             pnlHospital.Controls.Add(dateTimeHospital);
             pnlHospital.EdgeColor = Color.FromArgb(224, 224, 224);
-            pnlHospital.Location = new Point(6, 412);
+            pnlHospital.Location = new Point(3, 387);
             pnlHospital.Name = "pnlHospital";
             pnlHospital.Padding = new Padding(5);
             pnlHospital.Size = new Size(541, 115);
@@ -296,7 +296,7 @@ namespace MyScale.App.Pages
             // dateTimeHospital
             // 
             dateTimeHospital.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dateTimeHospital.Location = new Point(0, 80);
+            dateTimeHospital.Location = new Point(0, 73);
             dateTimeHospital.MinimumSize = new Size(0, 29);
             dateTimeHospital.Name = "dateTimeHospital";
             dateTimeHospital.Size = new Size(285, 29);
@@ -304,12 +304,12 @@ namespace MyScale.App.Pages
             // 
             // pnlHealthAgent
             // 
-            pnlHealthAgent.BackColor = Color.WhiteSmoke;
+            pnlHealthAgent.BackColor = Color.White;
             pnlHealthAgent.Controls.Add(labelCPF);
             pnlHealthAgent.Controls.Add(dateTimeHealthAgent);
             pnlHealthAgent.Controls.Add(txtDocument);
             pnlHealthAgent.EdgeColor = Color.FromArgb(224, 224, 224);
-            pnlHealthAgent.Location = new Point(3, 419);
+            pnlHealthAgent.Location = new Point(3, 388);
             pnlHealthAgent.Name = "pnlHealthAgent";
             pnlHealthAgent.Padding = new Padding(5);
             pnlHealthAgent.Size = new Size(541, 67);
@@ -372,7 +372,7 @@ namespace MyScale.App.Pages
             txtZipCode.Font = new Font("Segoe UI", 12F);
             txtZipCode.ForeColor = Color.FromArgb(48, 49, 51);
             txtZipCode.Hint = "CEP";
-            txtZipCode.Location = new Point(6, 288);
+            txtZipCode.Location = new Point(6, 260);
             txtZipCode.MaxLength = 32767;
             txtZipCode.Multiline = false;
             txtZipCode.Name = "txtZipCode";
@@ -395,7 +395,7 @@ namespace MyScale.App.Pages
             txtStreet.Font = new Font("Segoe UI", 12F);
             txtStreet.ForeColor = Color.FromArgb(48, 49, 51);
             txtStreet.Hint = "Rua";
-            txtStreet.Location = new Point(129, 288);
+            txtStreet.Location = new Point(129, 260);
             txtStreet.MaxLength = 32767;
             txtStreet.Multiline = false;
             txtStreet.Name = "txtStreet";
@@ -418,7 +418,7 @@ namespace MyScale.App.Pages
             txtNumber.Font = new Font("Segoe UI", 12F);
             txtNumber.ForeColor = Color.FromArgb(48, 49, 51);
             txtNumber.Hint = "Nº";
-            txtNumber.Location = new Point(455, 288);
+            txtNumber.Location = new Point(455, 260);
             txtNumber.MaxLength = 32767;
             txtNumber.Multiline = false;
             txtNumber.Name = "txtNumber";
@@ -441,7 +441,7 @@ namespace MyScale.App.Pages
             txtCity.Font = new Font("Segoe UI", 12F);
             txtCity.ForeColor = Color.FromArgb(48, 49, 51);
             txtCity.Hint = "Cidade";
-            txtCity.Location = new Point(300, 334);
+            txtCity.Location = new Point(300, 306);
             txtCity.MaxLength = 32767;
             txtCity.Multiline = false;
             txtCity.Name = "txtCity";
@@ -463,7 +463,7 @@ namespace MyScale.App.Pages
             comboBoxState.FormattingEnabled = true;
             comboBoxState.ItemHeight = 26;
             comboBoxState.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
-            comboBoxState.Location = new Point(423, 337);
+            comboBoxState.Location = new Point(423, 309);
             comboBoxState.Name = "comboBoxState";
             comboBoxState.Size = new Size(121, 32);
             comboBoxState.TabIndex = 14;
@@ -478,7 +478,7 @@ namespace MyScale.App.Pages
             txtComplement.Font = new Font("Segoe UI", 12F);
             txtComplement.ForeColor = Color.FromArgb(48, 49, 51);
             txtComplement.Hint = "Complemento";
-            txtComplement.Location = new Point(6, 376);
+            txtComplement.Location = new Point(6, 348);
             txtComplement.MaxLength = 32767;
             txtComplement.Multiline = false;
             txtComplement.Name = "txtComplement";
@@ -515,7 +515,7 @@ namespace MyScale.App.Pages
             txtNeighborhood.Font = new Font("Segoe UI", 12F);
             txtNeighborhood.ForeColor = Color.FromArgb(48, 49, 51);
             txtNeighborhood.Hint = "Bairro";
-            txtNeighborhood.Location = new Point(6, 332);
+            txtNeighborhood.Location = new Point(6, 304);
             txtNeighborhood.MaxLength = 32767;
             txtNeighborhood.Multiline = false;
             txtNeighborhood.Name = "txtNeighborhood";
@@ -531,8 +531,9 @@ namespace MyScale.App.Pages
             // 
             // RegisterForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(550, 583);
             Controls.Add(pnlHospital);
             Controls.Add(pnlHealthAgent);
@@ -552,6 +553,7 @@ namespace MyScale.App.Pages
             Controls.Add(radioHealthAgent);
             Controls.Add(foxLabel1);
             ForeColor = SystemColors.ControlLightLight;
+            HeaderColor = Color.SeaGreen;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "RegisterForm";

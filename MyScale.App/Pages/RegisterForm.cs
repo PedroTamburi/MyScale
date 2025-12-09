@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace MyScale.App.Pages
 {
-    public partial class RegisterForm : MaterialForm
+    public partial class RegisterForm : LostForm
     {
         private readonly MaterialSkinManager materialSkinManager;
 
@@ -40,16 +40,6 @@ namespace MyScale.App.Pages
             pnlHealthAgent.BringToFront();
             pnlHospital.BringToFront();
 
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new MaterialColorScheme(
-                MaterialPrimary.Teal500,
-                MaterialPrimary.Teal700,
-                MaterialPrimary.Teal100,
-                MaterialAccent.LightBlue200,
-                MaterialTextShade.WHITE
-            );
         }
 
         private void radioHealthAgent_CheckedChanged(object sender, EventArgs e)
