@@ -1,4 +1,5 @@
 ﻿using ReaLTaiizor.Controls;
+using System.Text;
 
 namespace MyScale.App.Pages
 {
@@ -36,7 +37,7 @@ namespace MyScale.App.Pages
             txtName = new HopeTextBox();
             txtEmail = new HopeTextBox();
             txtUsername = new HopeTextBox();
-            txtSenha = new HopeTextBox();
+            txtPassword = new HopeTextBox();
             pnlHospital = new ReaLTaiizor.Controls.Panel();
             labelMunicipalRegistry = new FoxLabel();
             labelCNPJ = new FoxLabel();
@@ -55,8 +56,17 @@ namespace MyScale.App.Pages
             txtComplement = new HopeTextBox();
             btnRegister = new ForeverButton();
             txtNeighborhood = new HopeTextBox();
+            pBoxEyeHidden = new PictureBox();
+            pBoxEyeVisible = new PictureBox();
+            lblCheckTamanho = new FoxLabel();
+            lblCheckMaiuscula = new FoxLabel();
+            lblCheckMinuscula = new FoxLabel();
+            lblCheckNumero = new FoxLabel();
+            lblCheckSimbolo = new FoxLabel();
             pnlHospital.SuspendLayout();
             pnlHealthAgent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeHidden).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeVisible).BeginInit();
             SuspendLayout();
             // 
             // foxLabel1
@@ -129,7 +139,7 @@ namespace MyScale.App.Pages
             txtName.SelectionLength = 0;
             txtName.SelectionStart = 0;
             txtName.Size = new Size(305, 38);
-            txtName.TabIndex = 5;
+            txtName.TabIndex = 1;
             txtName.TabStop = false;
             txtName.UseSystemPasswordChar = false;
             // 
@@ -152,7 +162,7 @@ namespace MyScale.App.Pages
             txtEmail.SelectionLength = 0;
             txtEmail.SelectionStart = 0;
             txtEmail.Size = new Size(538, 38);
-            txtEmail.TabIndex = 6;
+            txtEmail.TabIndex = 3;
             txtEmail.TabStop = false;
             txtEmail.UseSystemPasswordChar = false;
             // 
@@ -175,32 +185,33 @@ namespace MyScale.App.Pages
             txtUsername.SelectionLength = 0;
             txtUsername.SelectionStart = 0;
             txtUsername.Size = new Size(227, 38);
-            txtUsername.TabIndex = 7;
+            txtUsername.TabIndex = 2;
             txtUsername.TabStop = false;
             txtUsername.UseSystemPasswordChar = false;
             // 
-            // txtSenha
+            // txtPassword
             // 
-            txtSenha.BackColor = Color.White;
-            txtSenha.BaseColor = Color.White;
-            txtSenha.BorderColorA = Color.FromArgb(64, 158, 255);
-            txtSenha.BorderColorB = Color.FromArgb(220, 223, 230);
-            txtSenha.Font = new Font("Segoe UI", 12F);
-            txtSenha.ForeColor = Color.FromArgb(48, 49, 51);
-            txtSenha.Hint = "Senha";
-            txtSenha.Location = new Point(6, 216);
-            txtSenha.MaxLength = 32767;
-            txtSenha.Multiline = false;
-            txtSenha.Name = "txtSenha";
-            txtSenha.PasswordChar = '\0';
-            txtSenha.ScrollBars = ScrollBars.None;
-            txtSenha.SelectedText = "";
-            txtSenha.SelectionLength = 0;
-            txtSenha.SelectionStart = 0;
-            txtSenha.Size = new Size(538, 38);
-            txtSenha.TabIndex = 8;
-            txtSenha.TabStop = false;
-            txtSenha.UseSystemPasswordChar = true;
+            txtPassword.BackColor = Color.White;
+            txtPassword.BaseColor = Color.White;
+            txtPassword.BorderColorA = Color.FromArgb(64, 158, 255);
+            txtPassword.BorderColorB = Color.FromArgb(220, 223, 230);
+            txtPassword.Font = new Font("Segoe UI", 12F);
+            txtPassword.ForeColor = Color.FromArgb(48, 49, 51);
+            txtPassword.Hint = "Senha";
+            txtPassword.Location = new Point(6, 216);
+            txtPassword.MaxLength = 32767;
+            txtPassword.Multiline = false;
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '\0';
+            txtPassword.ScrollBars = ScrollBars.None;
+            txtPassword.SelectedText = "";
+            txtPassword.SelectionLength = 0;
+            txtPassword.SelectionStart = 0;
+            txtPassword.Size = new Size(538, 38);
+            txtPassword.TabIndex = 4;
+            txtPassword.TabStop = false;
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // pnlHospital
             // 
@@ -211,7 +222,7 @@ namespace MyScale.App.Pages
             pnlHospital.Controls.Add(txtMuniciaplRegistry);
             pnlHospital.Controls.Add(dateTimeHospital);
             pnlHospital.EdgeColor = Color.FromArgb(224, 224, 224);
-            pnlHospital.Location = new Point(3, 387);
+            pnlHospital.Location = new Point(6, 403);
             pnlHospital.Name = "pnlHospital";
             pnlHospital.Padding = new Padding(5);
             pnlHospital.Size = new Size(541, 115);
@@ -236,7 +247,7 @@ namespace MyScale.App.Pages
             labelCNPJ.BackColor = Color.Transparent;
             labelCNPJ.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             labelCNPJ.ForeColor = Color.Red;
-            labelCNPJ.Location = new Point(395, 54);
+            labelCNPJ.Location = new Point(395, 51);
             labelCNPJ.Name = "labelCNPJ";
             labelCNPJ.Size = new Size(140, 19);
             labelCNPJ.TabIndex = 21;
@@ -262,7 +273,7 @@ namespace MyScale.App.Pages
             txtCNPJ.SelectionLength = 0;
             txtCNPJ.SelectionStart = 0;
             txtCNPJ.Size = new Size(343, 38);
-            txtCNPJ.TabIndex = 17;
+            txtCNPJ.TabIndex = 13;
             txtCNPJ.TabStop = false;
             txtCNPJ.UseSystemPasswordChar = false;
             txtCNPJ.KeyPress += txtCNPJ_KeyPress;
@@ -287,7 +298,7 @@ namespace MyScale.App.Pages
             txtMuniciaplRegistry.SelectionLength = 0;
             txtMuniciaplRegistry.SelectionStart = 0;
             txtMuniciaplRegistry.Size = new Size(188, 38);
-            txtMuniciaplRegistry.TabIndex = 16;
+            txtMuniciaplRegistry.TabIndex = 12;
             txtMuniciaplRegistry.TabStop = false;
             txtMuniciaplRegistry.UseSystemPasswordChar = false;
             txtMuniciaplRegistry.KeyPress += txtMuniciaplRegistry_KeyPress;
@@ -309,7 +320,7 @@ namespace MyScale.App.Pages
             pnlHealthAgent.Controls.Add(dateTimeHealthAgent);
             pnlHealthAgent.Controls.Add(txtDocument);
             pnlHealthAgent.EdgeColor = Color.FromArgb(224, 224, 224);
-            pnlHealthAgent.Location = new Point(3, 388);
+            pnlHealthAgent.Location = new Point(3, 402);
             pnlHealthAgent.Name = "pnlHealthAgent";
             pnlHealthAgent.Padding = new Padding(5);
             pnlHealthAgent.Size = new Size(541, 67);
@@ -322,7 +333,7 @@ namespace MyScale.App.Pages
             labelCPF.BackColor = Color.Transparent;
             labelCPF.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             labelCPF.ForeColor = Color.Red;
-            labelCPF.Location = new Point(3, 45);
+            labelCPF.Location = new Point(3, 47);
             labelCPF.Name = "labelCPF";
             labelCPF.Size = new Size(196, 19);
             labelCPF.TabIndex = 24;
@@ -357,7 +368,7 @@ namespace MyScale.App.Pages
             txtDocument.SelectionLength = 0;
             txtDocument.SelectionStart = 0;
             txtDocument.Size = new Size(240, 38);
-            txtDocument.TabIndex = 16;
+            txtDocument.TabIndex = 12;
             txtDocument.TabStop = false;
             txtDocument.UseSystemPasswordChar = false;
             txtDocument.KeyPress += txtDocument_KeyPress;
@@ -372,7 +383,7 @@ namespace MyScale.App.Pages
             txtZipCode.Font = new Font("Segoe UI", 12F);
             txtZipCode.ForeColor = Color.FromArgb(48, 49, 51);
             txtZipCode.Hint = "CEP";
-            txtZipCode.Location = new Point(6, 260);
+            txtZipCode.Location = new Point(6, 274);
             txtZipCode.MaxLength = 32767;
             txtZipCode.Multiline = false;
             txtZipCode.Name = "txtZipCode";
@@ -382,7 +393,7 @@ namespace MyScale.App.Pages
             txtZipCode.SelectionLength = 0;
             txtZipCode.SelectionStart = 0;
             txtZipCode.Size = new Size(117, 38);
-            txtZipCode.TabIndex = 10;
+            txtZipCode.TabIndex = 5;
             txtZipCode.TabStop = false;
             txtZipCode.UseSystemPasswordChar = false;
             // 
@@ -395,7 +406,7 @@ namespace MyScale.App.Pages
             txtStreet.Font = new Font("Segoe UI", 12F);
             txtStreet.ForeColor = Color.FromArgb(48, 49, 51);
             txtStreet.Hint = "Rua";
-            txtStreet.Location = new Point(129, 260);
+            txtStreet.Location = new Point(129, 274);
             txtStreet.MaxLength = 32767;
             txtStreet.Multiline = false;
             txtStreet.Name = "txtStreet";
@@ -405,7 +416,7 @@ namespace MyScale.App.Pages
             txtStreet.SelectionLength = 0;
             txtStreet.SelectionStart = 0;
             txtStreet.Size = new Size(320, 38);
-            txtStreet.TabIndex = 11;
+            txtStreet.TabIndex = 6;
             txtStreet.TabStop = false;
             txtStreet.UseSystemPasswordChar = false;
             // 
@@ -418,7 +429,7 @@ namespace MyScale.App.Pages
             txtNumber.Font = new Font("Segoe UI", 12F);
             txtNumber.ForeColor = Color.FromArgb(48, 49, 51);
             txtNumber.Hint = "Nº";
-            txtNumber.Location = new Point(455, 260);
+            txtNumber.Location = new Point(455, 274);
             txtNumber.MaxLength = 32767;
             txtNumber.Multiline = false;
             txtNumber.Name = "txtNumber";
@@ -428,7 +439,7 @@ namespace MyScale.App.Pages
             txtNumber.SelectionLength = 0;
             txtNumber.SelectionStart = 0;
             txtNumber.Size = new Size(89, 38);
-            txtNumber.TabIndex = 12;
+            txtNumber.TabIndex = 7;
             txtNumber.TabStop = false;
             txtNumber.UseSystemPasswordChar = false;
             // 
@@ -441,7 +452,7 @@ namespace MyScale.App.Pages
             txtCity.Font = new Font("Segoe UI", 12F);
             txtCity.ForeColor = Color.FromArgb(48, 49, 51);
             txtCity.Hint = "Cidade";
-            txtCity.Location = new Point(300, 306);
+            txtCity.Location = new Point(300, 320);
             txtCity.MaxLength = 32767;
             txtCity.Multiline = false;
             txtCity.Name = "txtCity";
@@ -451,7 +462,7 @@ namespace MyScale.App.Pages
             txtCity.SelectionLength = 0;
             txtCity.SelectionStart = 0;
             txtCity.Size = new Size(117, 38);
-            txtCity.TabIndex = 13;
+            txtCity.TabIndex = 9;
             txtCity.TabStop = false;
             txtCity.UseSystemPasswordChar = false;
             // 
@@ -463,10 +474,10 @@ namespace MyScale.App.Pages
             comboBoxState.FormattingEnabled = true;
             comboBoxState.ItemHeight = 26;
             comboBoxState.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
-            comboBoxState.Location = new Point(423, 309);
+            comboBoxState.Location = new Point(423, 323);
             comboBoxState.Name = "comboBoxState";
             comboBoxState.Size = new Size(121, 32);
-            comboBoxState.TabIndex = 14;
+            comboBoxState.TabIndex = 10;
             comboBoxState.Text = "UF";
             // 
             // txtComplement
@@ -478,7 +489,7 @@ namespace MyScale.App.Pages
             txtComplement.Font = new Font("Segoe UI", 12F);
             txtComplement.ForeColor = Color.FromArgb(48, 49, 51);
             txtComplement.Hint = "Complemento";
-            txtComplement.Location = new Point(6, 348);
+            txtComplement.Location = new Point(6, 362);
             txtComplement.MaxLength = 32767;
             txtComplement.Multiline = false;
             txtComplement.Name = "txtComplement";
@@ -488,7 +499,7 @@ namespace MyScale.App.Pages
             txtComplement.SelectionLength = 0;
             txtComplement.SelectionStart = 0;
             txtComplement.Size = new Size(538, 38);
-            txtComplement.TabIndex = 15;
+            txtComplement.TabIndex = 11;
             txtComplement.TabStop = false;
             txtComplement.UseSystemPasswordChar = false;
             // 
@@ -515,7 +526,7 @@ namespace MyScale.App.Pages
             txtNeighborhood.Font = new Font("Segoe UI", 12F);
             txtNeighborhood.ForeColor = Color.FromArgb(48, 49, 51);
             txtNeighborhood.Hint = "Bairro";
-            txtNeighborhood.Location = new Point(6, 304);
+            txtNeighborhood.Location = new Point(6, 318);
             txtNeighborhood.MaxLength = 32767;
             txtNeighborhood.Multiline = false;
             txtNeighborhood.Name = "txtNeighborhood";
@@ -525,9 +536,88 @@ namespace MyScale.App.Pages
             txtNeighborhood.SelectionLength = 0;
             txtNeighborhood.SelectionStart = 0;
             txtNeighborhood.Size = new Size(288, 38);
-            txtNeighborhood.TabIndex = 23;
+            txtNeighborhood.TabIndex = 8;
             txtNeighborhood.TabStop = false;
             txtNeighborhood.UseSystemPasswordChar = false;
+            // 
+            // pBoxEyeHidden
+            // 
+            pBoxEyeHidden.BackgroundImage = Properties.Resources.eye_hidden;
+            pBoxEyeHidden.BackgroundImageLayout = ImageLayout.Stretch;
+            pBoxEyeHidden.Cursor = Cursors.Hand;
+            pBoxEyeHidden.Location = new Point(508, 220);
+            pBoxEyeHidden.Name = "pBoxEyeHidden";
+            pBoxEyeHidden.Size = new Size(30, 30);
+            pBoxEyeHidden.TabIndex = 25;
+            pBoxEyeHidden.TabStop = false;
+            pBoxEyeHidden.Click += pBoxEyeHidden_Click;
+            // 
+            // pBoxEyeVisible
+            // 
+            pBoxEyeVisible.BackgroundImage = Properties.Resources.eye_visible;
+            pBoxEyeVisible.BackgroundImageLayout = ImageLayout.Stretch;
+            pBoxEyeVisible.Cursor = Cursors.Hand;
+            pBoxEyeVisible.Location = new Point(508, 220);
+            pBoxEyeVisible.Name = "pBoxEyeVisible";
+            pBoxEyeVisible.Size = new Size(30, 30);
+            pBoxEyeVisible.TabIndex = 26;
+            pBoxEyeVisible.TabStop = false;
+            pBoxEyeVisible.Click += pBoxEyeVisible_Click;
+            // 
+            // lblCheckTamanho
+            // 
+            lblCheckTamanho.BackColor = Color.Transparent;
+            lblCheckTamanho.Font = new Font("Segoe UI", 8.25F);
+            lblCheckTamanho.ForeColor = Color.Gray;
+            lblCheckTamanho.Location = new Point(6, 258);
+            lblCheckTamanho.Name = "lblCheckTamanho";
+            lblCheckTamanho.Size = new Size(117, 15);
+            lblCheckTamanho.TabIndex = 23;
+            lblCheckTamanho.Text = "• Mínimo 8 caracteres";
+            // 
+            // lblCheckMaiuscula
+            // 
+            lblCheckMaiuscula.BackColor = Color.Transparent;
+            lblCheckMaiuscula.Font = new Font("Segoe UI", 8.25F);
+            lblCheckMaiuscula.ForeColor = Color.Gray;
+            lblCheckMaiuscula.Location = new Point(129, 258);
+            lblCheckMaiuscula.Name = "lblCheckMaiuscula";
+            lblCheckMaiuscula.Size = new Size(100, 15);
+            lblCheckMaiuscula.TabIndex = 27;
+            lblCheckMaiuscula.Text = "• Letra Maiúscula";
+            // 
+            // lblCheckMinuscula
+            // 
+            lblCheckMinuscula.BackColor = Color.Transparent;
+            lblCheckMinuscula.Font = new Font("Segoe UI", 8.25F);
+            lblCheckMinuscula.ForeColor = Color.Gray;
+            lblCheckMinuscula.Location = new Point(235, 258);
+            lblCheckMinuscula.Name = "lblCheckMinuscula";
+            lblCheckMinuscula.Size = new Size(100, 15);
+            lblCheckMinuscula.TabIndex = 28;
+            lblCheckMinuscula.Text = "• Letra Minúscula";
+            // 
+            // lblCheckNumero
+            // 
+            lblCheckNumero.BackColor = Color.Transparent;
+            lblCheckNumero.Font = new Font("Segoe UI", 8.25F);
+            lblCheckNumero.ForeColor = Color.Gray;
+            lblCheckNumero.Location = new Point(341, 258);
+            lblCheckNumero.Name = "lblCheckNumero";
+            lblCheckNumero.Size = new Size(61, 15);
+            lblCheckNumero.TabIndex = 29;
+            lblCheckNumero.Text = "• Número";
+            // 
+            // lblCheckSimbolo
+            // 
+            lblCheckSimbolo.BackColor = Color.Transparent;
+            lblCheckSimbolo.Font = new Font("Segoe UI", 8.25F);
+            lblCheckSimbolo.ForeColor = Color.Gray;
+            lblCheckSimbolo.Location = new Point(400, 258);
+            lblCheckSimbolo.Name = "lblCheckSimbolo";
+            lblCheckSimbolo.Size = new Size(61, 15);
+            lblCheckSimbolo.TabIndex = 30;
+            lblCheckSimbolo.Text = "• Simbolo";
             // 
             // RegisterForm
             // 
@@ -535,6 +625,13 @@ namespace MyScale.App.Pages
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(550, 583);
+            Controls.Add(lblCheckSimbolo);
+            Controls.Add(lblCheckNumero);
+            Controls.Add(lblCheckMinuscula);
+            Controls.Add(lblCheckMaiuscula);
+            Controls.Add(lblCheckTamanho);
+            Controls.Add(pBoxEyeVisible);
+            Controls.Add(pBoxEyeHidden);
             Controls.Add(pnlHospital);
             Controls.Add(pnlHealthAgent);
             Controls.Add(txtNeighborhood);
@@ -545,7 +642,7 @@ namespace MyScale.App.Pages
             Controls.Add(txtNumber);
             Controls.Add(txtStreet);
             Controls.Add(txtZipCode);
-            Controls.Add(txtSenha);
+            Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(txtEmail);
             Controls.Add(txtName);
@@ -562,6 +659,8 @@ namespace MyScale.App.Pages
             Load += RegisterForm_Load;
             pnlHospital.ResumeLayout(false);
             pnlHealthAgent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeHidden).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeVisible).EndInit();
             ResumeLayout(false);
         }
 
@@ -575,7 +674,7 @@ namespace MyScale.App.Pages
         private HopeTextBox txtEmail;
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
         private ReaLTaiizor.Controls.HopeTextBox txtUsername;
-        private ReaLTaiizor.Controls.HopeTextBox txtSenha;
+        private ReaLTaiizor.Controls.HopeTextBox txtPassword;
         private ReaLTaiizor.Controls.Panel pnlHospital;
         private PoisonDateTime dateTimeHospital;
         private HopeTextBox txtCNPJ;
@@ -602,5 +701,12 @@ namespace MyScale.App.Pages
         private FoxLabel labelCNPJ;
         private FoxLabel labelCPF;
         private FoxLabel labelMunicipalRegistry;
+        private PictureBox pBoxEyeHidden;
+        private PictureBox pBoxEyeVisible;
+        private FoxLabel lblCheckTamanho;
+        private FoxLabel lblCheckMaiuscula;
+        private FoxLabel lblCheckMinuscula;
+        private FoxLabel lblCheckNumero;
+        private FoxLabel lblCheckSimbolo;
     }
 }

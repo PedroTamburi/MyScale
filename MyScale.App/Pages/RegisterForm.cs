@@ -7,7 +7,11 @@ using ReaLTaiizor.Controls;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 using ReaLTaiizor.Util;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.Drawing;
+using System.Text.RegularExpressions;
+using ReaLTaiizor.Controls;
 
 namespace MyScale.App.Pages
 {
@@ -36,22 +40,14 @@ namespace MyScale.App.Pages
             // tela
             pnlHealthAgent.Visible = false;
             pnlHospital.Visible = false;
+            pBoxEyeVisible.Visible = false;
+            txtPassword.UseSystemPasswordChar = true;
+
 
             pnlHealthAgent.BringToFront();
             pnlHospital.BringToFront();
-
         }
-
-        private void radioHealthAgent_CheckedChanged(object sender, EventArgs e)
-        {
-            AlternarCampos();
-        }
-
-        private void radioHospital_CheckedChanged(object sender, EventArgs e)
-        {
-            AlternarCampos();
-        }
-
+        #region metodos
         private void AlternarCampos()
         {
             if (radioHospital.Checked)
@@ -67,6 +63,33 @@ namespace MyScale.App.Pages
                 txtCNPJ.Text = string.Empty;
                 txtMuniciaplRegistry.Text = string.Empty;
             }
+        }
+
+        private void DefinirStatus(FoxLabel label, bool valido)
+        {
+            if (valido)
+            {
+                label.ForeColor = Color.Green;
+                label.Font = new Font(label.Font, FontStyle.Bold);
+            }
+            else
+            {
+                label.ForeColor = Color.Gray;
+                label.Font = new Font(label.Font, FontStyle.Regular);
+            }
+        }
+
+        
+        #endregion
+        #region Eventos
+        private void radioHealthAgent_CheckedChanged(object sender, EventArgs e)
+        {
+            AlternarCampos();
+        }
+
+        private void radioHospital_CheckedChanged(object sender, EventArgs e)
+        {
+            AlternarCampos();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -94,7 +117,7 @@ namespace MyScale.App.Pages
                         Name = txtName.Text,
                         Email = txtEmail.Text,
                         Username = txtUsername.Text,
-                        Password = txtSenha.Text,
+                        Password = txtPassword.Text,
 
                         // Campos do painel Hospital
                         CNPJ = txtCNPJ.Text,
@@ -126,7 +149,7 @@ namespace MyScale.App.Pages
                         Name = txtName.Text,
                         Email = txtEmail.Text,
                         Username = txtUsername.Text,
-                        Password = txtSenha.Text,
+                        Password = txtPassword.Text,
 
                         Document = txtDocument.Text,
                         BirthDate = DateOnly.FromDateTime(dateTimeHealthAgent.Value),
@@ -250,5 +273,51 @@ namespace MyScale.App.Pages
                 }
             }
         }
+
+        private void pBoxEyeHidden_Click(object sender, EventArgs e)
+        {
+            pBoxEyeHidden.Visible = false;
+            pBoxEyeVisible.Visible = true;
+            txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void pBoxEyeVisible_Click(object sender, EventArgs e)
+        {
+            pBoxEyeHidden.Visible = true;
+            pBoxEyeVisible.Visible = false;
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            string senha = txtPassword.Text;
+
+            if (senha.Length >= 8)
+                DefinirStatus(lblCheckTamanho, true);
+            else
+                DefinirStatus(lblCheckTamanho, false);
+
+            if (Regex.IsMatch(senha, "[A-Z]"))
+                DefinirStatus(lblCheckMaiuscula, true);
+            else
+                DefinirStatus(lblCheckMaiuscula, false);
+
+            if (Regex.IsMatch(senha, "[a-z]"))
+                DefinirStatus(lblCheckMinuscula, true);
+            else
+                DefinirStatus(lblCheckMinuscula, false);
+
+            if (Regex.IsMatch(senha, "[0-9]"))
+                DefinirStatus(lblCheckNumero, true);
+            else
+                DefinirStatus(lblCheckNumero, false);
+
+            if (Regex.IsMatch(senha, "[\\W]"))
+                DefinirStatus(lblCheckSimbolo, true);
+            else
+                DefinirStatus(lblCheckSimbolo, false);
+
+        }
     }
 }
+#endregion
