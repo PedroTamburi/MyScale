@@ -23,7 +23,7 @@ namespace MyScale.Service.Validators
             RuleFor(hospital => hospital.FoundationDate)
                 .NotEmpty().WithMessage("Foundation Date is required.")
                 .WithMessage("Foundation Date must be a valid date.")
-                .LessThan(DateOnly.FromDateTime(DateTime.Now)).WithMessage("BirthDate must be in the past.");
+                .LessThan(DateTime.Now.Date).WithMessage("BirthDate must be in the past.");
 
             RuleFor(agent => agent.Email)
                 .NotEmpty().WithMessage("Email is required.")

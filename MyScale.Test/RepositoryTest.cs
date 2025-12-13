@@ -37,7 +37,7 @@ namespace MyScale.Tests
                     Password = "123",
                     Username = $"admin_{random}",
                     MunicipalRegistry = $"{random}",
-                    FoundationDate = new DateOnly(1990, 1, 1),
+                    FoundationDate = new DateTime(1990, 1, 1),
 
                     Address = new Address
                     {
@@ -73,7 +73,7 @@ namespace MyScale.Tests
                     Email = $"medico{random}@test.com",
                     Username = $"medico_{random}", 
                     Password = "senha_secreta",
-                    BirthDate = new DateOnly(1980, 5, 20),
+                    BirthDate = new DateTime(1980, 5, 20),
 
                     Address = new Address
                     {
@@ -111,7 +111,7 @@ namespace MyScale.Tests
                     Password = "123",
                     Username = $"admin_shift_{random}",
                     MunicipalRegistry = $"{random}",
-                    FoundationDate = new DateOnly(1990, 1, 1),
+                    FoundationDate = new DateTime(1990, 1, 1),
                     Address = new Address { ZipCode = "111", Street = "R", Number = "1", Neighborhood = "B", City = "C", State = "SP" }
                 };
 

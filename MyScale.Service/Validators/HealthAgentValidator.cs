@@ -33,7 +33,7 @@ namespace MyScale.Service.Validators
                 .MaximumLength(50).WithMessage("Username cannot exceed 50 characters.");
 
             RuleFor(agent => agent.BirthDate)
-                .LessThan(DateOnly.FromDateTime(DateTime.Now)).WithMessage("BirthDate must be in the past.");
+                .LessThan(DateTime.Now.Date).WithMessage("BirthDate must be in the past.");
 
             RuleFor(h => h.Address).SetValidator(new AddressValidator());
         }

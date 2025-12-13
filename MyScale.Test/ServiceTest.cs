@@ -56,7 +56,7 @@ namespace MyScale.Tests
                 Password = "123",
                 Username = $"admin_srv_{rnd}",
                 MunicipalRegistry = $"{rnd}",
-                FoundationDate = new DateOnly(2000, 1, 1),
+                FoundationDate = new DateTime(2000, 1, 1),
                 Address = new Address
                 {
                     ZipCode = "16200-000",
