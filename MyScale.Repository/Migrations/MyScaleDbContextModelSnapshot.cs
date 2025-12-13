@@ -25,8 +25,8 @@ namespace MyScale.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("BirthDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Document")
                         .IsRequired()
@@ -85,8 +85,8 @@ namespace MyScale.Repository.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateOnly>("FoundationDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("FoundationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()

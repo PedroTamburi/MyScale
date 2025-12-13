@@ -122,7 +122,7 @@ namespace MyScale.App.Pages
                         // Campos do painel Hospital
                         CNPJ = txtCNPJ.Text,
                         MunicipalRegistry = txtMuniciaplRegistry.Text,
-                        FoundationDate = DateOnly.FromDateTime(dateTimeHospital.Value),
+                        FoundationDate = dateTimeHospital.Value.Date,
 
                         Address = address,
                         RegisterDate = DateTime.Now,
@@ -152,9 +152,9 @@ namespace MyScale.App.Pages
                         Password = txtPassword.Text,
 
                         Document = txtDocument.Text,
-                        BirthDate = DateOnly.FromDateTime(dateTimeHealthAgent.Value),
+                        BirthDate = dateTimeHealthAgent.Value.Date,
 
-                        Address = address,
+                        Address = address,  
                         RegisterDate = DateTime.Now,
                         IsActive = true
                     };

@@ -11,7 +11,7 @@ using MyScale.Repository.Context;
 namespace MyScale.Repository.Migrations
 {
     [DbContext(typeof(MyScaleDbContext))]
-    [Migration("20251207184705_InitialCreate")]
+    [Migration("20251213030815_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,8 +28,8 @@ namespace MyScale.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("BirthDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Document")
                         .IsRequired()
@@ -88,8 +88,8 @@ namespace MyScale.Repository.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateOnly>("FoundationDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("FoundationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()

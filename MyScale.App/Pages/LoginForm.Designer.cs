@@ -28,116 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanel3 = new TableLayoutPanel();
-            materialTextBoxEdit1 = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            materialTextBoxEdit2 = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             tableLayoutPanel5 = new TableLayoutPanel();
             labelEdit3 = new ReaLTaiizor.Controls.LabelEdit();
+            foxButton1 = new ReaLTaiizor.Controls.FoxButton();
             tableLayoutPanel1 = new TableLayoutPanel();
             labelEdit4 = new ReaLTaiizor.Controls.LabelEdit();
             tableLayoutPanel2 = new TableLayoutPanel();
             labelEdit1 = new ReaLTaiizor.Controls.LabelEdit();
             tableLayoutPanel6 = new TableLayoutPanel();
-            button1 = new ReaLTaiizor.Controls.Button();
-            foxButton1 = new ReaLTaiizor.Controls.FoxButton();
-            tableLayoutPanel3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
+            btnLogin = new ReaLTaiizor.Controls.Button();
+            pBoxEyeVisible = new PictureBox();
+            pBoxEyeHidden = new PictureBox();
+            txtPassword = new ReaLTaiizor.Controls.HopeTextBox();
+            txtEmail = new ReaLTaiizor.Controls.HopeTextBox();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeVisible).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeHidden).BeginInit();
             SuspendLayout();
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(materialTextBoxEdit1, 0, 0);
-            tableLayoutPanel3.Location = new Point(2, 270);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(551, 58);
-            tableLayoutPanel3.TabIndex = 2;
-            // 
-            // materialTextBoxEdit1
-            // 
-            materialTextBoxEdit1.Anchor = AnchorStyles.Top;
-            materialTextBoxEdit1.AnimateReadOnly = false;
-            materialTextBoxEdit1.AutoCompleteMode = AutoCompleteMode.None;
-            materialTextBoxEdit1.AutoCompleteSource = AutoCompleteSource.None;
-            materialTextBoxEdit1.BackgroundImageLayout = ImageLayout.None;
-            materialTextBoxEdit1.CharacterCasing = CharacterCasing.Normal;
-            materialTextBoxEdit1.Depth = 0;
-            materialTextBoxEdit1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBoxEdit1.HideSelection = true;
-            materialTextBoxEdit1.Hint = "Email";
-            materialTextBoxEdit1.LeadingIcon = null;
-            materialTextBoxEdit1.Location = new Point(96, 3);
-            materialTextBoxEdit1.MaxLength = 32767;
-            materialTextBoxEdit1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            materialTextBoxEdit1.Name = "materialTextBoxEdit1";
-            materialTextBoxEdit1.PasswordChar = '\0';
-            materialTextBoxEdit1.PrefixSuffixText = null;
-            materialTextBoxEdit1.ReadOnly = false;
-            materialTextBoxEdit1.RightToLeft = RightToLeft.No;
-            materialTextBoxEdit1.SelectedText = "";
-            materialTextBoxEdit1.SelectionLength = 0;
-            materialTextBoxEdit1.SelectionStart = 0;
-            materialTextBoxEdit1.ShortcutsEnabled = true;
-            materialTextBoxEdit1.Size = new Size(358, 48);
-            materialTextBoxEdit1.TabIndex = 0;
-            materialTextBoxEdit1.TabStop = false;
-            materialTextBoxEdit1.TextAlign = HorizontalAlignment.Left;
-            materialTextBoxEdit1.TrailingIcon = null;
-            materialTextBoxEdit1.UseSystemPasswordChar = false;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(materialTextBoxEdit2, 0, 0);
-            tableLayoutPanel4.Location = new Point(0, 335);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(551, 58);
-            tableLayoutPanel4.TabIndex = 3;
-            // 
-            // materialTextBoxEdit2
-            // 
-            materialTextBoxEdit2.Anchor = AnchorStyles.Top;
-            materialTextBoxEdit2.AnimateReadOnly = false;
-            materialTextBoxEdit2.AutoCompleteMode = AutoCompleteMode.None;
-            materialTextBoxEdit2.AutoCompleteSource = AutoCompleteSource.None;
-            materialTextBoxEdit2.BackgroundImageLayout = ImageLayout.None;
-            materialTextBoxEdit2.CharacterCasing = CharacterCasing.Normal;
-            materialTextBoxEdit2.Depth = 0;
-            materialTextBoxEdit2.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBoxEdit2.HideSelection = true;
-            materialTextBoxEdit2.Hint = "Senha";
-            materialTextBoxEdit2.LeadingIcon = null;
-            materialTextBoxEdit2.Location = new Point(96, 3);
-            materialTextBoxEdit2.MaxLength = 32767;
-            materialTextBoxEdit2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            materialTextBoxEdit2.Name = "materialTextBoxEdit2";
-            materialTextBoxEdit2.PasswordChar = '●';
-            materialTextBoxEdit2.PrefixSuffixText = null;
-            materialTextBoxEdit2.ReadOnly = false;
-            materialTextBoxEdit2.RightToLeft = RightToLeft.No;
-            materialTextBoxEdit2.SelectedText = "";
-            materialTextBoxEdit2.SelectionLength = 0;
-            materialTextBoxEdit2.SelectionStart = 0;
-            materialTextBoxEdit2.ShortcutsEnabled = true;
-            materialTextBoxEdit2.Size = new Size(358, 48);
-            materialTextBoxEdit2.TabIndex = 0;
-            materialTextBoxEdit2.TabStop = false;
-            materialTextBoxEdit2.TextAlign = HorizontalAlignment.Left;
-            materialTextBoxEdit2.TrailingIcon = null;
-            materialTextBoxEdit2.UseSystemPasswordChar = true;
             // 
             // tableLayoutPanel5
             // 
@@ -166,6 +76,27 @@
             labelEdit3.Size = new Size(176, 20);
             labelEdit3.TabIndex = 1;
             labelEdit3.Text = "Não possui uma conta?";
+            // 
+            // foxButton1
+            // 
+            foxButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            foxButton1.BackColor = Color.Transparent;
+            foxButton1.BaseColor = Color.FromArgb(249, 249, 249);
+            foxButton1.BorderColor = Color.FromArgb(193, 193, 193);
+            foxButton1.DisabledBaseColor = Color.FromArgb(249, 249, 249);
+            foxButton1.DisabledBorderColor = Color.FromArgb(209, 209, 209);
+            foxButton1.DisabledTextColor = Color.FromArgb(166, 178, 190);
+            foxButton1.DownColor = Color.FromArgb(232, 232, 232);
+            foxButton1.EnabledCalc = true;
+            foxButton1.Font = new Font("Segoe UI", 10F);
+            foxButton1.ForeColor = Color.FromArgb(66, 78, 90);
+            foxButton1.Location = new Point(334, 3);
+            foxButton1.Name = "foxButton1";
+            foxButton1.OverColor = Color.FromArgb(242, 242, 242);
+            foxButton1.Size = new Size(120, 17);
+            foxButton1.TabIndex = 2;
+            foxButton1.Text = "INSCREVER-SE";
+            foxButton1.Click += foxButton1_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -225,7 +156,7 @@
             // 
             tableLayoutPanel6.ColumnCount = 1;
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Controls.Add(button1, 0, 0);
+            tableLayoutPanel6.Controls.Add(btnLogin, 0, 0);
             tableLayoutPanel6.Location = new Point(2, 447);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
@@ -234,47 +165,97 @@
             tableLayoutPanel6.Size = new Size(551, 49);
             tableLayoutPanel6.TabIndex = 9;
             // 
-            // button1
+            // btnLogin
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.BackColor = Color.Transparent;
-            button1.BorderColor = Color.FromArgb(32, 34, 37);
-            button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button1.EnteredColor = Color.FromArgb(32, 34, 37);
-            button1.Font = new Font("Microsoft Sans Serif", 12F);
-            button1.Image = null;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.InactiveColor = Color.MediumSeaGreen;
-            button1.Location = new Point(92, 3);
-            button1.Name = "button1";
-            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button1.PressedColor = Color.FromArgb(165, 37, 37);
-            button1.Size = new Size(366, 40);
-            button1.TabIndex = 0;
-            button1.Text = "LOGIN";
-            button1.TextAlignment = StringAlignment.Center;
-            button1.Click += button1_Click;
+            btnLogin.Anchor = AnchorStyles.Top;
+            btnLogin.BackColor = Color.Transparent;
+            btnLogin.BorderColor = Color.FromArgb(32, 34, 37);
+            btnLogin.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            btnLogin.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnLogin.Font = new Font("Microsoft Sans Serif", 12F);
+            btnLogin.Image = null;
+            btnLogin.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogin.InactiveColor = Color.MediumSeaGreen;
+            btnLogin.Location = new Point(92, 3);
+            btnLogin.Name = "btnLogin";
+            btnLogin.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnLogin.PressedColor = Color.FromArgb(165, 37, 37);
+            btnLogin.Size = new Size(366, 40);
+            btnLogin.TabIndex = 0;
+            btnLogin.Text = "LOGIN";
+            btnLogin.TextAlignment = StringAlignment.Center;
+            btnLogin.Click += btnLogin_Click;
             // 
-            // foxButton1
+            // pBoxEyeVisible
             // 
-            foxButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            foxButton1.BackColor = Color.Transparent;
-            foxButton1.BaseColor = Color.FromArgb(249, 249, 249);
-            foxButton1.BorderColor = Color.FromArgb(193, 193, 193);
-            foxButton1.DisabledBaseColor = Color.FromArgb(249, 249, 249);
-            foxButton1.DisabledBorderColor = Color.FromArgb(209, 209, 209);
-            foxButton1.DisabledTextColor = Color.FromArgb(166, 178, 190);
-            foxButton1.DownColor = Color.FromArgb(232, 232, 232);
-            foxButton1.EnabledCalc = true;
-            foxButton1.Font = new Font("Segoe UI", 10F);
-            foxButton1.ForeColor = Color.FromArgb(66, 78, 90);
-            foxButton1.Location = new Point(334, 3);
-            foxButton1.Name = "foxButton1";
-            foxButton1.OverColor = Color.FromArgb(242, 242, 242);
-            foxButton1.Size = new Size(120, 17);
-            foxButton1.TabIndex = 2;
-            foxButton1.Text = "INSCREVER-SE";
-            foxButton1.Click += foxButton1_Click;
+            pBoxEyeVisible.BackColor = Color.WhiteSmoke;
+            pBoxEyeVisible.BackgroundImage = Properties.Resources.eye_visible;
+            pBoxEyeVisible.BackgroundImageLayout = ImageLayout.Stretch;
+            pBoxEyeVisible.Cursor = Cursors.Hand;
+            pBoxEyeVisible.Location = new Point(416, 338);
+            pBoxEyeVisible.Name = "pBoxEyeVisible";
+            pBoxEyeVisible.Size = new Size(30, 30);
+            pBoxEyeVisible.TabIndex = 28;
+            pBoxEyeVisible.TabStop = false;
+            pBoxEyeVisible.Click += pBoxEyeVisible_Click;
+            // 
+            // pBoxEyeHidden
+            // 
+            pBoxEyeHidden.BackgroundImage = Properties.Resources.eye_hidden;
+            pBoxEyeHidden.BackgroundImageLayout = ImageLayout.Stretch;
+            pBoxEyeHidden.Cursor = Cursors.Hand;
+            pBoxEyeHidden.Location = new Point(416, 338);
+            pBoxEyeHidden.Name = "pBoxEyeHidden";
+            pBoxEyeHidden.Size = new Size(30, 30);
+            pBoxEyeHidden.TabIndex = 27;
+            pBoxEyeHidden.TabStop = false;
+            pBoxEyeHidden.Click += pBoxEyeHidden_Click;
+            // 
+            // txtPassword
+            // 
+            txtPassword.BackColor = Color.White;
+            txtPassword.BaseColor = Color.White;
+            txtPassword.BorderColorA = Color.FromArgb(64, 158, 255);
+            txtPassword.BorderColorB = Color.FromArgb(220, 223, 230);
+            txtPassword.Font = new Font("Segoe UI", 12F);
+            txtPassword.ForeColor = Color.FromArgb(48, 49, 51);
+            txtPassword.Hint = "Senha";
+            txtPassword.Location = new Point(102, 333);
+            txtPassword.MaxLength = 32767;
+            txtPassword.Multiline = false;
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '\0';
+            txtPassword.ScrollBars = ScrollBars.None;
+            txtPassword.SelectedText = "";
+            txtPassword.SelectionLength = 0;
+            txtPassword.SelectionStart = 0;
+            txtPassword.Size = new Size(358, 38);
+            txtPassword.TabIndex = 31;
+            txtPassword.TabStop = false;
+            txtPassword.UseSystemPasswordChar = true;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BackColor = Color.White;
+            txtEmail.BaseColor = Color.White;
+            txtEmail.BorderColorA = Color.FromArgb(64, 158, 255);
+            txtEmail.BorderColorB = Color.FromArgb(220, 223, 230);
+            txtEmail.Font = new Font("Segoe UI", 12F);
+            txtEmail.ForeColor = Color.FromArgb(48, 49, 51);
+            txtEmail.Hint = "Email";
+            txtEmail.Location = new Point(102, 279);
+            txtEmail.MaxLength = 32767;
+            txtEmail.Multiline = false;
+            txtEmail.Name = "txtEmail";
+            txtEmail.PasswordChar = '\0';
+            txtEmail.ScrollBars = ScrollBars.None;
+            txtEmail.SelectedText = "";
+            txtEmail.SelectionLength = 0;
+            txtEmail.SelectionStart = 0;
+            txtEmail.Size = new Size(358, 38);
+            txtEmail.TabIndex = 32;
+            txtEmail.TabStop = false;
+            txtEmail.UseSystemPasswordChar = false;
             // 
             // LoginForm
             // 
@@ -283,20 +264,21 @@
             BackColor = Color.White;
             BorderColor = Color.Transparent;
             ClientSize = new Size(550, 583);
+            Controls.Add(txtEmail);
+            Controls.Add(pBoxEyeVisible);
+            Controls.Add(pBoxEyeHidden);
             Controls.Add(tableLayoutPanel6);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
-            Controls.Add(tableLayoutPanel4);
-            Controls.Add(tableLayoutPanel3);
+            Controls.Add(txtPassword);
             HeaderColor = Color.SeaGreen;
+            Image = Properties.Resources.prancheta1;
             MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MyScale";
             Load += LoginForm_Load;
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -304,14 +286,12 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeVisible).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pBoxEyeHidden).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private TableLayoutPanel tableLayoutPanel3;
-        private ReaLTaiizor.Controls.MaterialTextBoxEdit materialTextBoxEdit1;
-        private TableLayoutPanel tableLayoutPanel4;
-        private ReaLTaiizor.Controls.MaterialTextBoxEdit materialTextBoxEdit2;
         private TableLayoutPanel tableLayoutPanel5;
         private ReaLTaiizor.Controls.LabelEdit labelEdit3;
         private TableLayoutPanel tableLayoutPanel1;
@@ -320,6 +300,10 @@
         private ReaLTaiizor.Controls.LabelEdit labelEdit1;
         private TableLayoutPanel tableLayoutPanel6;
         private ReaLTaiizor.Controls.FoxButton foxButton1;
-        private ReaLTaiizor.Controls.Button button1;
+        private ReaLTaiizor.Controls.Button btnLogin;
+        private PictureBox pBoxEyeVisible;
+        private PictureBox pBoxEyeHidden;
+        private ReaLTaiizor.Controls.HopeTextBox txtPassword;
+        private ReaLTaiizor.Controls.HopeTextBox txtEmail;
     }
 }
