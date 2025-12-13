@@ -6,7 +6,7 @@ public class HealthAgent : BaseEntity<int>
 {
     public string Name { get; set; }
     public string Document { get; set; }
-    public DateOnly BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public string Username { get; set; }
@@ -22,7 +22,7 @@ public class HealthAgent : BaseEntity<int>
         Shifts = new List<MedicalShift>();
     }
 
-    public HealthAgent(int id, string name, DateOnly birthDate, string document,  string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
+    public HealthAgent(int id, string name, DateTime birthDate, string document,  string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
         : base(id)
     {
         Name = name;

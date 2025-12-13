@@ -7,7 +7,7 @@ public class Hospital : BaseEntity<int>
     public string Name { get; set; }
     public string MunicipalRegistry { get; set; }
     public string CNPJ { get; set; }
-    public DateOnly FoundationDate { get; set; }
+    public DateTime FoundationDate { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public string Username { get; set; }
@@ -25,7 +25,7 @@ public class Hospital : BaseEntity<int>
         Shifts = new List<MedicalShift>();
     }
 
-    public Hospital(int id, string name,string municipalRegistry, string cnpj, DateOnly foundationDate, string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
+    public Hospital(int id, string name,string municipalRegistry, string cnpj, DateTime foundationDate, string password, string username, string email, DateTime registerDate, DateTime loginDate, bool isActive)
         : base(id)
     {
         Name = name;
