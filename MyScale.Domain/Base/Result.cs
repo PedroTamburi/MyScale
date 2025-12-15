@@ -43,6 +43,11 @@ namespace MyScale.Domain.Base
         public static new Result<T> Failure(Error error) => new(default!, false, error);
 
         public static Result<T> Failure(Error error, T value) => new(value, false, error);
+
+        public static Result<int> Failure(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

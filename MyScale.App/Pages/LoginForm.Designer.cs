@@ -230,7 +230,7 @@
             txtPassword.SelectionLength = 0;
             txtPassword.SelectionStart = 0;
             txtPassword.Size = new Size(358, 38);
-            txtPassword.TabIndex = 31;
+            txtPassword.TabIndex = 2;
             txtPassword.TabStop = false;
             txtPassword.UseSystemPasswordChar = true;
             // 
@@ -253,7 +253,7 @@
             txtEmail.SelectionLength = 0;
             txtEmail.SelectionStart = 0;
             txtEmail.Size = new Size(358, 38);
-            txtEmail.TabIndex = 32;
+            txtEmail.TabIndex = 1;
             txtEmail.TabStop = false;
             txtEmail.UseSystemPasswordChar = false;
             // 
