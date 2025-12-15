@@ -25,17 +25,24 @@ namespace MyScale.App.Pages
             IMedicalShiftRepository medicalShiftRepository)
         {
             InitializeComponent();
+            poisonPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            gridShifts.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             _hospitalRepository = hospitalRepository;
             _agentRepository = agentRepository;
             _medicalShiftRepository = medicalShiftRepository;
         }
-
+        #region criar plantão
+        #region metodos
         public void LoadUser(string userType)
         {
             UserProfile = userType;
             this.Text = $"MyScale - Acesso: {userType}";
             AccessConfiguration();
+            if (GlobalSession.IsHospital)
+            {
+                CarregarPlantoesHospital(); 
+            }
         }
 
         private void AccessConfiguration()
@@ -60,7 +67,8 @@ namespace MyScale.App.Pages
             _startTimeShiftSelected = null;
             _endTimeShiftSelected = null;
         }
-
+        #endregion
+        #region eventos
         private void btnCalendario_Click(object sender, EventArgs e)
         {
             using (var formCalendario = new calendarForm())
@@ -91,7 +99,6 @@ namespace MyScale.App.Pages
         {
             try
             {
-                // 1. Validações
                 if (_startTimeShiftSelected == null || _endTimeShiftSelected == null)
                 {
                     MessageBox.Show("Por favor, selecione a data e o horário do plantão.",
@@ -105,7 +112,6 @@ namespace MyScale.App.Pages
                     return;
                 }
 
-                // 2. Recupera usuário da SESSÃO GLOBAL (MUDANÇA AQUI)
                 if (GlobalSession.UsuarioLogado == null)
                 {
                     MessageBox.Show("Sessão perdida. Faça login novamente.");
@@ -113,8 +119,6 @@ namespace MyScale.App.Pages
                     return;
                 }
 
-                // 3. Monta a Entidade DIRETAMENTE (Sem Command)
-                // Convertemos o texto do valor para decimal com segurança
                 if (!decimal.TryParse(txtPaymentAmount.Text, out decimal valorPagamento))
                 {
                     MessageBox.Show("Valor inválido. Digite apenas números e vírgula.");
@@ -129,19 +133,103 @@ namespace MyScale.App.Pages
                     paymentAmount: valorPagamento,
                     hospitalId: GlobalSession.UserId 
                 );
-
-                // 4. Salva usando o REPOSITÓRIO (Sem Mediator)
                 await _medicalShiftRepository.AddAsync(novoPlantao);
 
-                // 5. Sucesso
                 MessageBox.Show("Plantão criado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clean();
+                CarregarPlantoesHospital();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+        #endregion
+
+        #region consultar plantões
+        private async void CarregarPlantoesHospital()
+        {
+            try
+            {
+                if (!GlobalSession.IsHospital) return;
+
+                var listaPlantoes = await _medicalShiftRepository.GetByHospitalIdAsync(GlobalSession.UserId);
+
+                gridShifts.DataSource = listaPlantoes;
+
+                ConfigurarGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar plantões: {ex.Message}");
+            }
+        }
+
+        private void ConfigurarGrid()
+        {
+            // 1. LIMPEZA GERAL
+            gridShifts.AutoGenerateColumns = true;
+            gridShifts.ReadOnly = true;            
+            gridShifts.AllowUserToAddRows = false; 
+            gridShifts.AllowUserToDeleteRows = false;
+            gridShifts.MultiSelect = false;
+            gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect; 
+            gridShifts.RowHeadersVisible = false;  
+            gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // 2. ESTILO DO CABEÇALHO
+            gridShifts.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            gridShifts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gridShifts.ColumnHeadersHeight = 35;
+            gridShifts.EnableHeadersVisualStyles = false; 
+            gridShifts.ColumnHeadersDefaultCellStyle.BackColor = Color.SeaGreen;
+
+            // 3. OCULTAR COLUNAS TÉCNICAS (IDs, Chaves estrangeiras, Datas de log)
+            OcultarColuna("Id");
+            OcultarColuna("HospitalId");
+            OcultarColuna("HealthAgentId");
+            OcultarColuna("Hospital");    
+            OcultarColuna("HealthAgent"); 
+            OcultarColuna("CreatedDate");
+            OcultarColuna("UpdatedDate");
+
+            // 4. FORMATAR E RENOMEAR COLUNAS 
+            ConfigurarColuna("Date", "Data", "dd/MM/yyyy");
+            ConfigurarColuna("StartTime", "Início", "HH:mm");
+            ConfigurarColuna("EndTime", "Fim", "HH:mm"); 
+            ConfigurarColuna("PaymentAmount", "Valor", "C2");
+            ConfigurarColuna("IsOpen", "Disponível", "null");
+
+            if (gridShifts.Columns["Date"] != null) gridShifts.Columns["Date"].DisplayIndex = 0;
+            if (gridShifts.Columns["StartTime"] != null) gridShifts.Columns["StartTime"].DisplayIndex = 1;
+            if (gridShifts.Columns["EndTime"] != null) gridShifts.Columns["EndTime"].DisplayIndex = 2;
+
+        }
+
+        private void OcultarColuna(string nomeColuna)
+        {
+            if (gridShifts.Columns[nomeColuna] != null)
+            {
+                gridShifts.Columns[nomeColuna].Visible = false;
+            }
+        }
+
+        private void ConfigurarColuna(string nomeColuna, string novoTitulo, string formato)
+        {
+            if (gridShifts.Columns[nomeColuna] != null)
+            {
+                gridShifts.Columns[nomeColuna].HeaderText = novoTitulo;
+                gridShifts.Columns[nomeColuna].DefaultCellStyle.Format = formato;
+                gridShifts.Columns[nomeColuna].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+        }
+
+        #endregion
+
+        #region editar plantoes
+
+        #endregion
     }
 }
     

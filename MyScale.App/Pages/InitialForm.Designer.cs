@@ -31,6 +31,9 @@
             components = new System.ComponentModel.Container();
             ReaLTaiizor.Controls.TabPage tabPageHealthAgent;
             TabPage tabPagePlantao;
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tabPage6 = new TabPage();
             tabPage7 = new TabPage();
             tabPageUser = new TabPage();
@@ -49,6 +52,7 @@
             btnCalendario = new ReaLTaiizor.Controls.Button();
             txtPaymentAmount = new ReaLTaiizor.Controls.HopeTextBox();
             tabPage2 = new TabPage();
+            gridShifts = new ReaLTaiizor.Controls.PoisonDataGridView();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPageHospital = new ReaLTaiizor.Controls.TabPage();
@@ -60,6 +64,8 @@
             poisonTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             poisonPanel1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gridShifts).BeginInit();
             tabPageHospital.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,7 +81,6 @@
             tabPageHealthAgent.Controls.Add(tabPagePlantao);
             tabPageHealthAgent.Controls.Add(tabPage6);
             tabPageHealthAgent.Controls.Add(tabPage7);
-            tabPageHealthAgent.Dock = DockStyle.Fill;
             tabPageHealthAgent.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabPageHealthAgent.FrameColor = Color.MediumSeaGreen;
             tabPageHealthAgent.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -161,6 +166,7 @@
             poisonTabControl1.Padding = new Point(6, 8);
             poisonTabControl1.SelectedIndex = 0;
             poisonTabControl1.Size = new Size(1272, 848);
+            poisonTabControl1.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Green;
             poisonTabControl1.TabIndex = 0;
             poisonTabControl1.UseSelectable = true;
             // 
@@ -348,13 +354,65 @@
             // 
             // tabPage2
             // 
-            tabPage2.Location = new Point(4, 35);
+            tabPage2.Controls.Add(gridShifts);
+            tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1264, 809);
+            tabPage2.Size = new Size(1264, 806);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Consultar plantões";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // gridShifts
+            // 
+            gridShifts.AllowUserToAddRows = false;
+            gridShifts.AllowUserToDeleteRows = false;
+            gridShifts.AllowUserToOrderColumns = true;
+            gridShifts.AllowUserToResizeRows = false;
+            gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
+            gridShifts.BorderStyle = BorderStyle.None;
+            gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            gridShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.SeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            gridShifts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            gridShifts.ColumnHeadersHeight = 35;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.PaleGreen;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            gridShifts.DefaultCellStyle = dataGridViewCellStyle2;
+            gridShifts.Dock = DockStyle.Top;
+            gridShifts.EnableHeadersVisualStyles = false;
+            gridShifts.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            gridShifts.GridColor = Color.FromArgb(255, 255, 255);
+            gridShifts.Location = new Point(3, 3);
+            gridShifts.MultiSelect = false;
+            gridShifts.Name = "gridShifts";
+            gridShifts.ReadOnly = true;
+            gridShifts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            gridShifts.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            gridShifts.RowHeadersVisible = false;
+            gridShifts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridShifts.Size = new Size(1258, 638);
+            gridShifts.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -438,6 +496,8 @@
             tabPage1.PerformLayout();
             poisonPanel1.ResumeLayout(false);
             poisonPanel1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)gridShifts).EndInit();
             tabPageHospital.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -468,5 +528,6 @@
         private ReaLTaiizor.Controls.LabelEdit lblInicio;
         private ReaLTaiizor.Controls.LabelEdit lblDia;
         private ReaLTaiizor.Controls.LabelEdit lbllDuracao;
+        private ReaLTaiizor.Controls.PoisonDataGridView gridShifts;
     }
 }
