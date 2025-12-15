@@ -228,7 +228,23 @@ namespace MyScale.App.Pages
         #endregion
 
         #region editar plantoes
+        private void gridShifts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
 
+            if (gridShifts.Rows[e.RowIndex].Cells["Id"].Value is int idPlantao)
+            {
+                using (var editForm = new EditShiftForm(idPlantao, _medicalShiftRepository))
+                {
+                    var resultado = editForm.ShowDialog();
+
+                    if (resultado == DialogResult.OK)
+                    {
+                        CarregarPlantoesHospital();
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

@@ -53,8 +53,6 @@
             txtPaymentAmount = new ReaLTaiizor.Controls.HopeTextBox();
             tabPage2 = new TabPage();
             gridShifts = new ReaLTaiizor.Controls.PoisonDataGridView();
-            tabPage3 = new TabPage();
-            tabPage4 = new TabPage();
             tabPageHospital = new ReaLTaiizor.Controls.TabPage();
             imageList1 = new ImageList(components);
             tabPageHealthAgent = new ReaLTaiizor.Controls.TabPage();
@@ -158,8 +156,6 @@
             // 
             poisonTabControl1.Controls.Add(tabPage1);
             poisonTabControl1.Controls.Add(tabPage2);
-            poisonTabControl1.Controls.Add(tabPage3);
-            poisonTabControl1.Controls.Add(tabPage4);
             poisonTabControl1.Dock = DockStyle.Fill;
             poisonTabControl1.Location = new Point(3, 3);
             poisonTabControl1.Name = "poisonTabControl1";
@@ -355,10 +351,10 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(gridShifts);
-            tabPage2.Location = new Point(4, 38);
+            tabPage2.Location = new Point(4, 35);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1264, 806);
+            tabPage2.Size = new Size(1264, 809);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Consultar plantões";
             tabPage2.UseVisualStyleBackColor = true;
@@ -413,26 +409,7 @@
             gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gridShifts.Size = new Size(1258, 638);
             gridShifts.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Location = new Point(4, 35);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1264, 809);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Atualizar plantões";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            tabPage4.Location = new Point(4, 35);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1264, 809);
-            tabPage4.TabIndex = 3;
-            tabPage4.Text = "Apagar plantões";
-            tabPage4.UseVisualStyleBackColor = true;
+            gridShifts.CellDoubleClick += gridShifts_CellDoubleClick;
             // 
             // tabPageHospital
             // 
@@ -506,7 +483,6 @@
 
         private TabPage tabPageUser;
         private TabPage tabPageShifts;
-        private TabPage tabPage3;
         private ReaLTaiizor.Controls.TabPage tabPageHospital;
         private ReaLTaiizor.Controls.TabPage tabPageHealthAgent;
         private TabPage tabPagePlantao;
@@ -516,7 +492,6 @@
         private ReaLTaiizor.Controls.PoisonTabControl poisonTabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private TabPage tabPage4;
         private ReaLTaiizor.Controls.LabelEdit labelEdit1;
         private ReaLTaiizor.Controls.Button btnCalendario;
         private ReaLTaiizor.Controls.HopeTextBox txtPaymentAmount;

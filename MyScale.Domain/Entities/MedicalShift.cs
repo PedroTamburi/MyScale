@@ -36,6 +36,13 @@ public class MedicalShift : BaseEntity<int>
     public void AssignAgent(int agentId)
     {
         HealthAgentId = agentId;
+    }
 
+    public void Update(DateTime start, DateTime end, DateOnly date, decimal amount)
+    {
+        StartTime = start;
+        EndTime = end;
+        Date = date;
+        PaymentAmount = amount;
     }
 }

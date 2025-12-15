@@ -37,5 +37,30 @@ namespace MyScale.Repository.Repository
                 .OrderBy(p => p.StartTime)
                 .ToListAsync();
         }
+
+        // buscar um plantão específico para editar
+        public async Task<MedicalShift> GetByIdAsync(int id)
+        {
+            return await _context.MedicalShifts.FindAsync(id);
+        }
+
+        // salva as alterações no banco
+        public async Task UpdateAsync(MedicalShift medicalShift)
+        {
+            _context.MedicalShifts.Update(medicalShift);
+            await _context.SaveChangesAsync();
+        }
+
+        // deleta plantao
+        public async Task DeleteAsync(int id)
+        {
+            var plantao = await _context.MedicalShifts.FindAsync(id);
+            if (plantao != null)
+            {
+                _context.MedicalShifts.Remove(plantao);
+
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
