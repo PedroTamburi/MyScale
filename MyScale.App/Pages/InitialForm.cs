@@ -20,8 +20,8 @@ namespace MyScale.App.Pages
 
         public string UserProfile { get; private set; }
         public InitialForm(
-            IBaseRepository<Hospital> hospitalRepository, 
-            IBaseRepository<HealthAgent> agentRepository, 
+            IBaseRepository<Hospital> hospitalRepository,
+            IBaseRepository<HealthAgent> agentRepository,
             IMedicalShiftRepository medicalShiftRepository)
         {
             InitializeComponent();
@@ -32,16 +32,19 @@ namespace MyScale.App.Pages
             _agentRepository = agentRepository;
             _medicalShiftRepository = medicalShiftRepository;
         }
+        #region plantoes
         #region criar plantão
         #region metodos
-        public void LoadUser(string userType)
+        public async void LoadUser(string userType)
         {
             UserProfile = userType;
             this.Text = $"MyScale - Acesso: {userType}";
             AccessConfiguration();
+
             if (GlobalSession.IsHospital)
             {
-                CarregarPlantoesHospital(); 
+                await CarregarPlantoesHospital();
+                CarregarDadosPerfil();
             }
         }
 
@@ -131,7 +134,7 @@ namespace MyScale.App.Pages
                     endTime: _endTimeShiftSelected.Value,
                     date: DateOnly.FromDateTime(_startTimeShiftSelected.Value),
                     paymentAmount: valorPagamento,
-                    hospitalId: GlobalSession.UserId 
+                    hospitalId: GlobalSession.UserId
                 );
                 await _medicalShiftRepository.AddAsync(novoPlantao);
 
@@ -148,7 +151,7 @@ namespace MyScale.App.Pages
         #endregion
 
         #region consultar plantões
-        private async void CarregarPlantoesHospital()
+        private async Task CarregarPlantoesHospital()
         {
             try
             {
@@ -170,34 +173,34 @@ namespace MyScale.App.Pages
         {
             // 1. LIMPEZA GERAL
             gridShifts.AutoGenerateColumns = true;
-            gridShifts.ReadOnly = true;            
-            gridShifts.AllowUserToAddRows = false; 
+            gridShifts.ReadOnly = true;
+            gridShifts.AllowUserToAddRows = false;
             gridShifts.AllowUserToDeleteRows = false;
             gridShifts.MultiSelect = false;
-            gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect; 
-            gridShifts.RowHeadersVisible = false;  
+            gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridShifts.RowHeadersVisible = false;
             gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // 2. ESTILO DO CABEÇALHO
             gridShifts.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             gridShifts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gridShifts.ColumnHeadersHeight = 35;
-            gridShifts.EnableHeadersVisualStyles = false; 
+            gridShifts.EnableHeadersVisualStyles = false;
             gridShifts.ColumnHeadersDefaultCellStyle.BackColor = Color.SeaGreen;
 
             // 3. OCULTAR COLUNAS TÉCNICAS (IDs, Chaves estrangeiras, Datas de log)
             OcultarColuna("Id");
             OcultarColuna("HospitalId");
             OcultarColuna("HealthAgentId");
-            OcultarColuna("Hospital");    
-            OcultarColuna("HealthAgent"); 
+            OcultarColuna("Hospital");
+            OcultarColuna("HealthAgent");
             OcultarColuna("CreatedDate");
             OcultarColuna("UpdatedDate");
 
             // 4. FORMATAR E RENOMEAR COLUNAS 
             ConfigurarColuna("Date", "Data", "dd/MM/yyyy");
             ConfigurarColuna("StartTime", "Início", "HH:mm");
-            ConfigurarColuna("EndTime", "Fim", "HH:mm"); 
+            ConfigurarColuna("EndTime", "Fim", "HH:mm");
             ConfigurarColuna("PaymentAmount", "Valor", "C2");
             ConfigurarColuna("IsOpen", "Disponível", "null");
 
@@ -246,6 +249,97 @@ namespace MyScale.App.Pages
             }
         }
         #endregion
+        #endregion
+
+        #region usuario
+
+        private void CarregarDadosPerfil()
+        {
+            try
+            {
+                if (!GlobalSession.IsHospital) return;
+
+                var hospital = _hospitalRepository.Select(GlobalSession.UserId);
+
+                if (hospital != null)
+                {
+                    lblName.Text = $"Nome: {hospital.Name}";
+                    lblMunicipalRegistry.Text = $"Registro Municipal: {hospital.MunicipalRegistry}";
+                    lblCNPJ.Text = $"CNPJ: {hospital.CNPJ}";
+
+                    // Se for DateTime: .ToString("dd/MM/yyyy")
+                    // Se for DateOnly: .ToString() ou interpolado como abaixo
+                    lblFoundationDate.Text = $"Data de fundação: {hospital.FoundationDate:dd/MM/yyyy}";
+
+                    lblEmail.Text = $"Email: {hospital.Email}";
+                    lblUsername.Text = hospital.Username;
+
+                    // Endereço
+                    lblStreet.Text = $"Rua: {hospital.Address.Street}";
+                    lblNumber.Text = $"Numero: {hospital.Address.Number}";
+                    lblNeighborhood.Text = $"Bairro: {hospital.Address.Neighborhood}";
+                    lblCity.Text = $"Cidade: {hospital.Address.City}";
+                    lblState.Text = $"Estado: {hospital.Address.State}";
+                    lblZipCode.Text = $"CEP: {hospital.Address.ZipCode}";
+                    lblComplement.Text = $"Complemento: {hospital.Address.Complement}";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar perfil: {ex.Message}");
+            }
+        }
+
+
+        #endregion
+
+        private void labelEdit4_Click(object sender, EventArgs e)
+        {
+            using (var formEdicao = new EditProfileForm(GlobalSession.UserId, _hospitalRepository))
+            {
+                var resultado = formEdicao.ShowDialog();
+
+                if (resultado == DialogResult.OK)
+                {
+                    CarregarDadosPerfil();
+                }
+            }
+        }
+
+        private async void lblExcluirConta_Click(object sender, EventArgs e)
+        {
+            var confirmacao = MessageBox.Show(
+                "ATENÇÃO: Você está prestes a excluir sua conta permanentemente.\n\n" +
+                "Isso apagará seus dados, seu endereço e TODOS os plantões cadastrados.\n\n" +
+                "Tem certeza absoluta que deseja continuar?",
+                "Excluir Conta",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2);
+
+            if (confirmacao == DialogResult.Yes)
+            {
+                try
+                {
+                    var plantoes = await _medicalShiftRepository.GetByHospitalIdAsync(GlobalSession.UserId);
+
+                    foreach (var plantao in plantoes)
+                    {
+                        await _medicalShiftRepository.DeleteAsync(plantao.Id);
+                    }
+
+                    _hospitalRepository.Delete(GlobalSession.UserId);
+
+                    MessageBox.Show("Conta excluída com sucesso.", "Adeus!");
+
+                    System.Windows.Forms.Application.Restart();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao excluir: {ex.Message}");
+                }
+            }
+        }
     }
 }
     

@@ -307,7 +307,7 @@ namespace MyScale.App.Pages
             // dateTimeHospital
             // 
             dateTimeHospital.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dateTimeHospital.Location = new Point(0, 73);
+            dateTimeHospital.Location = new Point(3, 77);
             dateTimeHospital.MinimumSize = new Size(0, 29);
             dateTimeHospital.Name = "dateTimeHospital";
             dateTimeHospital.Size = new Size(285, 29);

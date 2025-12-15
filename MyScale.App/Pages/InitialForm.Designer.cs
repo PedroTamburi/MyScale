@@ -31,12 +31,28 @@
             components = new System.ComponentModel.Container();
             ReaLTaiizor.Controls.TabPage tabPageHealthAgent;
             TabPage tabPagePlantao;
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabPage6 = new TabPage();
             tabPage7 = new TabPage();
             tabPageUser = new TabPage();
+            lblMunicipalRegistry = new ReaLTaiizor.Controls.LabelEdit();
+            lblComplement = new ReaLTaiizor.Controls.LabelEdit();
+            lblZipCode = new ReaLTaiizor.Controls.LabelEdit();
+            lblState = new ReaLTaiizor.Controls.LabelEdit();
+            lblCity = new ReaLTaiizor.Controls.LabelEdit();
+            lblNeighborhood = new ReaLTaiizor.Controls.LabelEdit();
+            lblNumber = new ReaLTaiizor.Controls.LabelEdit();
+            lblStreet = new ReaLTaiizor.Controls.LabelEdit();
+            lblName = new ReaLTaiizor.Controls.LabelEdit();
+            lblFoundationDate = new ReaLTaiizor.Controls.LabelEdit();
+            lblCNPJ = new ReaLTaiizor.Controls.LabelEdit();
+            lblEmail = new ReaLTaiizor.Controls.LabelEdit();
+            this.lblExcluirConta = new ReaLTaiizor.Controls.LabelEdit();
+            lblEditar = new ReaLTaiizor.Controls.LabelEdit();
+            hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
+            lblUsername = new ReaLTaiizor.Controls.LabelEdit();
             tabPageShifts = new TabPage();
             poisonTabControl1 = new ReaLTaiizor.Controls.PoisonTabControl();
             tabPage1 = new TabPage();
@@ -58,6 +74,8 @@
             tabPageHealthAgent = new ReaLTaiizor.Controls.TabPage();
             tabPagePlantao = new TabPage();
             tabPageHealthAgent.SuspendLayout();
+            tabPageUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox1).BeginInit();
             tabPageShifts.SuspendLayout();
             poisonTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -134,12 +152,226 @@
             // tabPageUser
             // 
             tabPageUser.BackColor = Color.White;
+            tabPageUser.Controls.Add(lblMunicipalRegistry);
+            tabPageUser.Controls.Add(lblComplement);
+            tabPageUser.Controls.Add(lblZipCode);
+            tabPageUser.Controls.Add(lblState);
+            tabPageUser.Controls.Add(lblCity);
+            tabPageUser.Controls.Add(lblNeighborhood);
+            tabPageUser.Controls.Add(lblNumber);
+            tabPageUser.Controls.Add(lblStreet);
+            tabPageUser.Controls.Add(lblName);
+            tabPageUser.Controls.Add(lblFoundationDate);
+            tabPageUser.Controls.Add(lblCNPJ);
+            tabPageUser.Controls.Add(lblEmail);
+            tabPageUser.Controls.Add(this.lblExcluirConta);
+            tabPageUser.Controls.Add(lblEditar);
+            tabPageUser.Controls.Add(hopePictureBox1);
+            tabPageUser.Controls.Add(lblUsername);
             tabPageUser.Location = new Point(154, 4);
             tabPageUser.Name = "tabPageUser";
             tabPageUser.Padding = new Padding(3);
             tabPageUser.Size = new Size(1278, 854);
             tabPageUser.TabIndex = 2;
             tabPageUser.Text = "Usuário";
+            // 
+            // lblMunicipalRegistry
+            // 
+            lblMunicipalRegistry.AutoSize = true;
+            lblMunicipalRegistry.BackColor = Color.Transparent;
+            lblMunicipalRegistry.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMunicipalRegistry.ForeColor = Color.Black;
+            lblMunicipalRegistry.Location = new Point(284, 158);
+            lblMunicipalRegistry.Name = "lblMunicipalRegistry";
+            lblMunicipalRegistry.Size = new Size(173, 25);
+            lblMunicipalRegistry.TabIndex = 15;
+            lblMunicipalRegistry.Text = "Registro Municipal:";
+            // 
+            // lblComplement
+            // 
+            lblComplement.AutoSize = true;
+            lblComplement.BackColor = Color.Transparent;
+            lblComplement.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblComplement.ForeColor = Color.Black;
+            lblComplement.Location = new Point(284, 372);
+            lblComplement.Name = "lblComplement";
+            lblComplement.Size = new Size(131, 25);
+            lblComplement.TabIndex = 14;
+            lblComplement.Text = "Complemento";
+            // 
+            // lblZipCode
+            // 
+            lblZipCode.AutoSize = true;
+            lblZipCode.BackColor = Color.Transparent;
+            lblZipCode.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblZipCode.ForeColor = Color.Black;
+            lblZipCode.Location = new Point(284, 347);
+            lblZipCode.Name = "lblZipCode";
+            lblZipCode.Size = new Size(49, 25);
+            lblZipCode.TabIndex = 13;
+            lblZipCode.Text = "CEP:";
+            // 
+            // lblState
+            // 
+            lblState.AutoSize = true;
+            lblState.BackColor = Color.Transparent;
+            lblState.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblState.ForeColor = Color.Black;
+            lblState.Location = new Point(284, 322);
+            lblState.Name = "lblState";
+            lblState.Size = new Size(77, 25);
+            lblState.TabIndex = 12;
+            lblState.Text = "Estado: ";
+            // 
+            // lblCity
+            // 
+            lblCity.AutoSize = true;
+            lblCity.BackColor = Color.Transparent;
+            lblCity.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCity.ForeColor = Color.Black;
+            lblCity.Location = new Point(284, 297);
+            lblCity.Name = "lblCity";
+            lblCity.Size = new Size(75, 25);
+            lblCity.TabIndex = 11;
+            lblCity.Text = "Cidade:";
+            // 
+            // lblNeighborhood
+            // 
+            lblNeighborhood.AutoSize = true;
+            lblNeighborhood.BackColor = Color.Transparent;
+            lblNeighborhood.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNeighborhood.ForeColor = Color.Black;
+            lblNeighborhood.Location = new Point(284, 272);
+            lblNeighborhood.Name = "lblNeighborhood";
+            lblNeighborhood.Size = new Size(67, 25);
+            lblNeighborhood.TabIndex = 10;
+            lblNeighborhood.Text = "Bairro:";
+            // 
+            // lblNumber
+            // 
+            lblNumber.AutoSize = true;
+            lblNumber.BackColor = Color.Transparent;
+            lblNumber.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNumber.ForeColor = Color.Black;
+            lblNumber.Location = new Point(284, 247);
+            lblNumber.Name = "lblNumber";
+            lblNumber.Size = new Size(85, 25);
+            lblNumber.TabIndex = 9;
+            lblNumber.Text = "Número:";
+            // 
+            // lblStreet
+            // 
+            lblStreet.AutoSize = true;
+            lblStreet.BackColor = Color.Transparent;
+            lblStreet.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStreet.ForeColor = Color.Black;
+            lblStreet.Location = new Point(284, 222);
+            lblStreet.Name = "lblStreet";
+            lblStreet.Size = new Size(53, 25);
+            lblStreet.TabIndex = 8;
+            lblStreet.Text = "Rua: ";
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.BackColor = Color.Transparent;
+            lblName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblName.ForeColor = Color.Black;
+            lblName.Location = new Point(284, 108);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(67, 25);
+            lblName.TabIndex = 7;
+            lblName.Text = "Nome:";
+            // 
+            // lblFoundationDate
+            // 
+            lblFoundationDate.AutoSize = true;
+            lblFoundationDate.BackColor = Color.Transparent;
+            lblFoundationDate.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFoundationDate.ForeColor = Color.Black;
+            lblFoundationDate.Location = new Point(284, 183);
+            lblFoundationDate.Name = "lblFoundationDate";
+            lblFoundationDate.Size = new Size(165, 25);
+            lblFoundationDate.TabIndex = 6;
+            lblFoundationDate.Text = "Data de fundação:";
+            // 
+            // lblCNPJ
+            // 
+            lblCNPJ.AutoSize = true;
+            lblCNPJ.BackColor = Color.Transparent;
+            lblCNPJ.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCNPJ.ForeColor = Color.Black;
+            lblCNPJ.Location = new Point(284, 133);
+            lblCNPJ.Name = "lblCNPJ";
+            lblCNPJ.Size = new Size(59, 25);
+            lblCNPJ.TabIndex = 5;
+            lblCNPJ.Text = "CNPJ:";
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.BackColor = Color.Transparent;
+            lblEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEmail.ForeColor = Color.Black;
+            lblEmail.Location = new Point(286, 49);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(159, 25);
+            lblEmail.TabIndex = 4;
+            lblEmail.Text = "Email do Usuário:";
+            // 
+            // lblExcluirConta
+            // 
+            this.lblExcluirConta.AutoSize = true;
+            this.lblExcluirConta.BackColor = Color.Transparent;
+            this.lblExcluirConta.Cursor = Cursors.Hand;
+            this.lblExcluirConta.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
+            this.lblExcluirConta.ForeColor = Color.Black;
+            this.lblExcluirConta.Location = new Point(19, 293);
+            this.lblExcluirConta.Name = "lblExcluirConta";
+            this.lblExcluirConta.Size = new Size(172, 25);
+            this.lblExcluirConta.TabIndex = 3;
+            this.lblExcluirConta.Text = "Excluir Usuário";
+            this.lblExcluirConta.Click += this.lblExcluirConta_Click;
+            // 
+            // lblEditar
+            // 
+            lblEditar.AutoSize = true;
+            lblEditar.BackColor = Color.Transparent;
+            lblEditar.Cursor = Cursors.Hand;
+            lblEditar.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
+            lblEditar.ForeColor = Color.Black;
+            lblEditar.Location = new Point(19, 256);
+            lblEditar.Name = "lblEditar";
+            lblEditar.Size = new Size(209, 25);
+            lblEditar.TabIndex = 2;
+            lblEditar.Text = "Editar informações";
+            lblEditar.Click += labelEdit4_Click;
+            // 
+            // hopePictureBox1
+            // 
+            hopePictureBox1.BackColor = Color.FromArgb(192, 196, 204);
+            hopePictureBox1.BackgroundImage = Properties.Resources.user;
+            hopePictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            hopePictureBox1.Location = new Point(19, 17);
+            hopePictureBox1.Name = "hopePictureBox1";
+            hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox1.Size = new Size(225, 225);
+            hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox1.TabIndex = 1;
+            hopePictureBox1.TabStop = false;
+            hopePictureBox1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.BackColor = Color.Transparent;
+            lblUsername.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.ForeColor = Color.Black;
+            lblUsername.Location = new Point(284, 17);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(229, 32);
+            lblUsername.TabIndex = 0;
+            lblUsername.Text = "Nome do Usuário: ";
             // 
             // tabPageShifts
             // 
@@ -367,26 +599,25 @@
             gridShifts.AllowUserToResizeRows = false;
             gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
-            gridShifts.BorderStyle = BorderStyle.None;
-            gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle1.SelectionBackColor = Color.SeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            gridShifts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle4.SelectionBackColor = Color.SeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            gridShifts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             gridShifts.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.PaleGreen;
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            gridShifts.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.PaleGreen;
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            gridShifts.DefaultCellStyle = dataGridViewCellStyle5;
             gridShifts.Dock = DockStyle.Top;
             gridShifts.EnableHeadersVisualStyles = false;
             gridShifts.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -396,14 +627,14 @@
             gridShifts.Name = "gridShifts";
             gridShifts.ReadOnly = true;
             gridShifts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            gridShifts.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            gridShifts.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             gridShifts.RowHeadersVisible = false;
             gridShifts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -467,6 +698,9 @@
             Text = "MyScale";
             WindowState = FormWindowState.Maximized;
             tabPageHealthAgent.ResumeLayout(false);
+            tabPageUser.ResumeLayout(false);
+            tabPageUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox1).EndInit();
             tabPageShifts.ResumeLayout(false);
             poisonTabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -504,5 +738,22 @@
         private ReaLTaiizor.Controls.LabelEdit lblDia;
         private ReaLTaiizor.Controls.LabelEdit lbllDuracao;
         private ReaLTaiizor.Controls.PoisonDataGridView gridShifts;
+        private ReaLTaiizor.Controls.LabelEdit lblUsername;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
+        private ReaLTaiizor.Controls.LabelEdit lblEmail;
+        private ReaLTaiizor.Controls.LabelEdit lblExcluirConta;
+        private ReaLTaiizor.Controls.LabelEdit labelEdit5;
+        private ReaLTaiizor.Controls.LabelEdit lblEditar;
+        private ReaLTaiizor.Controls.LabelEdit lblZipCode;
+        private ReaLTaiizor.Controls.LabelEdit lblState;
+        private ReaLTaiizor.Controls.LabelEdit lblCity;
+        private ReaLTaiizor.Controls.LabelEdit lblNeighborhood;
+        private ReaLTaiizor.Controls.LabelEdit lblNumber;
+        private ReaLTaiizor.Controls.LabelEdit lblStreet;
+        private ReaLTaiizor.Controls.LabelEdit lblName;
+        private ReaLTaiizor.Controls.LabelEdit lblFoundationDate;
+        private ReaLTaiizor.Controls.LabelEdit lblCNPJ;
+        private ReaLTaiizor.Controls.LabelEdit lblComplement;
+        private ReaLTaiizor.Controls.LabelEdit lblMunicipalRegistry;
     }
 }

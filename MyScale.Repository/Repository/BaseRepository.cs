@@ -24,8 +24,14 @@ public class BaseRepository<TEntity>(MyScaleDbContext context)
 
     public void Delete(object id)
     {
-        context.Set<TEntity>().Remove(Select(id));
-        context.SaveChanges();
+        var entity = Select(id);
+
+        if (entity != null)
+        {
+            context.ChangeTracker.Clear();
+            context.Set<TEntity>().Remove(entity);
+            context.SaveChanges();
+        }
     }
 
     public void Insert(TEntity entity)
@@ -64,7 +70,9 @@ public class BaseRepository<TEntity>(MyScaleDbContext context)
 
     public void Update(TEntity entity)
     {
-        context.Entry(entity).State = EntityState.Modified;
+        //context.Entry(entity).State = EntityState.Modified;
+        context.ChangeTracker.Clear();
+        context.Set<TEntity>().Update(entity);
         context.SaveChanges();
     }
 }

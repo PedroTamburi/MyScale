@@ -24,15 +24,29 @@ public class MyScaleDbContext : DbContext
 
         modelBuilder.Entity<MedicalShift>().HasKey(x => x.Id);
         modelBuilder.Entity<MedicalShift>()
-        .Property(x => x.Date)
-        .HasColumnType("date")
-        .HasConversion(
-            // Ao salvar: DateOnly -> DateTime
-            dateOnly => dateOnly.ToDateTime(TimeOnly.MinValue),
-
-            // Ao ler: DateTime -> DateOnly
-            dateTime => DateOnly.FromDateTime(dateTime)
+            .Property(x => x.Date)
+            .HasColumnType("date")
+            .HasConversion(
+                // Ao salvar: DateOnly -> DateTime
+                dateOnly => dateOnly.ToDateTime(TimeOnly.MinValue),
+                // Ao ler: DateTime -> DateOnly
+                dateTime => DateOnly.FromDateTime(dateTime)
         );
+
+        modelBuilder.Entity<Hospital>()
+        .Property(x => x.FoundationDate)
+        .HasColumnType("date");
+
+        modelBuilder.Entity<MedicalShift>()
+        .HasOne<Hospital>()
+        .WithMany()
+        .HasForeignKey(x => x.HospitalId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Hospital>()
+            .HasOne(h => h.Address)
+            .WithOne() 
+            .OnDelete(DeleteBehavior.Cascade);
 
         /*
         modelBuilder.Entity<HealthAgent>(new HealthAgentMap().Configure);
