@@ -1,20 +1,28 @@
-﻿using MyScale.Domain.Entities;
+﻿using MyScale.Domain.Base;
+using MyScale.Domain.Entities;
 
 namespace MyScale.Domain.Interfaces
 {
-    public interface IMedicalShiftRepository
+    public interface IMedicalShiftRepository : IBaseRepository<MedicalShift>
     {
-        Task<int> AddAsync(MedicalShift medicalShift);
-        // buscar lista de plantões de um hospital específico
-        Task<List<MedicalShift>> GetByHospitalIdAsync(int hospitalId);
-        // buscar plantões disponíveis para o Agente 
-        Task<List<MedicalShift>> GetAvailableShiftsAsync();
-        // busca plantao pelo id
-        Task<MedicalShift> GetByIdAsync(int id);
-        // salva no banco
-        Task UpdateAsync(MedicalShift medicalShift);
-        // deleta plantao
-        Task DeleteAsync(int id);
+        Task<int> AddAsync(MedicalShift medicalShift); // retirar
+
+        Task<List<MedicalShift>> GetByHospitalIdAsync(int hospitalId); // deixar
+
+        bool HasTimeConflict(int agentId, DateOnly date, DateTime newStart, DateTime newEnd); // deixar
+
+        List<MedicalShift> GetByHealthAgentId(int healthAgentId); // deixar
+        
+        void ReleaseShiftsByAgentId(int agentId); // deixar
+
+        List<MedicalShift> GetAvailableShifts(); // deixar
+
+        void AcceptShift(int shiftId, int healthAgentId); // deixar
+
+        Task<MedicalShift> GetByIdAsync(int id); // retirar
+        Task UpdateAsync(MedicalShift medicalShift); // retirar
+        Task DeleteAsync(int id); // retirar
+
     }
     }
 
