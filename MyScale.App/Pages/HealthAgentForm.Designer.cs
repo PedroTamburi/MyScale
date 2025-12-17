@@ -147,7 +147,6 @@
             gridShifts.AllowUserToResizeRows = false;
             gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
-            gridShifts.BorderStyle = BorderStyle.None;
             gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -210,7 +209,6 @@
             gridMyShifts.AllowUserToResizeRows = false;
             gridMyShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridMyShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
-            gridMyShifts.BorderStyle = BorderStyle.None;
             gridMyShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridMyShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;

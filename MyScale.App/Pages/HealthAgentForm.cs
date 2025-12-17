@@ -81,75 +81,65 @@ namespace MyScale.App.Pages
         {
             if (e.RowIndex < 0) return;
 
-            // pega os dados da linha clicada
             var row = gridShifts.Rows[e.RowIndex];
-
-            // verifica se tem ID válido
             if (row.Cells["Id"].Value == null) return;
             int shiftId = (int)row.Cells["Id"].Value;
 
             try
             {
-                var plantaoDesejado = _medicalShiftRepository.Select(shiftId);
+                var plantaoDesejado = _medicalShiftRepository.Select(shiftId, new List<string> { "Hospital", "Hospital.Address" });
 
-                if (plantaoDesejado != null) 
+                if (plantaoDesejado == null) return;
+
+                bool temConflito = _medicalShiftRepository.HasTimeConflict(
+                    GlobalSession.UserId,
+                    plantaoDesejado.Date,
+                    plantaoDesejado.StartTime,
+                    plantaoDesejado.EndTime
+                );
+
+                if (temConflito)
                 {
-                    bool temConflito = _medicalShiftRepository.HasTimeConflict(
-                        GlobalSession.UserId,
-                        plantaoDesejado.Date,
-                        plantaoDesejado.StartTime, 
-                        plantaoDesejado.EndTime    
-                    );
+                    MessageBox.Show(
+                        "Você não pode aceitar este plantão pois já possui outro agendado neste mesmo horário (ou em horários que se cruzam)!",
+                        "Conflito de Agenda",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    if (temConflito)
-                    {
-                        MessageBox.Show(
-                            "Você não pode aceitar este plantão pois já possui outro agendado neste mesmo horário (ou em horários que se cruzam)!",
-                            "Conflito de Agenda",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
-                        return;
-                    }
+                string nomeHospital = plantaoDesejado.Hospital.Name;
+
+                var end = plantaoDesejado.Hospital.Address;
+                string rua = end.Street;
+                string numero = end.Number;
+                string cidade = end.City;
+
+                string mensagem =
+                    $"Deseja aceitar este plantão?\n\n" +
+                    $"Hospital: {nomeHospital}\n" +
+                    $"Endereço: {rua}, {numero} - {cidade}\n" +
+                    $"Data: {plantaoDesejado.Date}\n" +
+                    $"Horário: {plantaoDesejado.StartTime:HH:mm} às {plantaoDesejado.EndTime:HH:mm}\n" +
+                    $"Valor: R$ {plantaoDesejado.PaymentAmount:F2}";
+
+                var resultado = MessageBox.Show(
+                    mensagem,
+                    "Confirmar Plantão",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    plantaoDesejado.HealthAgentId = GlobalSession.UserId;
+                    _medicalShiftRepository.Update(plantaoDesejado);
+                    MessageBox.Show("Plantão aceito com sucesso! Bom trabalho.");
+                    CarregarPlantoesDisponiveis();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao validar horários: " + ex.Message);
-                return;
-            }
-
-            // confirmação visual
-            string hospital = row.Cells["Hospital"].Value.ToString();
-            string data = row.Cells["Data"].Value.ToString();
-            string valor = row.Cells["Valor"].Value.ToString();
-            string horario = row.Cells["Horario"].Value.ToString();
-
-            var msg = MessageBox.Show(
-                $"Deseja aceitar este plantão?\n\n" +
-                $"Hospital: {hospital}\n" +
-                $"Data: {data}\n" +
-                $"Horário: {horario}\n" +
-                $"Valor: {valor}",
-                "Confirmar Plantão",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (msg == DialogResult.Yes)
-            {
-                try
-                {
-                    // chama o metodo de aceitar plantao
-                    _medicalShiftRepository.AcceptShift(shiftId, GlobalSession.UserId);
-
-                    MessageBox.Show("Plantão aceito com sucesso! Bom trabalho.");
-
-                    // atualiza plantoes disp
-                    CarregarPlantoesDisponiveis();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao aceitar: " + ex.Message);
-                }
+                MessageBox.Show("Erro ao processar: " + ex.Message);
             }
         }
         #endregion
