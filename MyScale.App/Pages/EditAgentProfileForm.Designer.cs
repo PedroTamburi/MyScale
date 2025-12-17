@@ -1,6 +1,6 @@
 ﻿namespace MyScale.App.Pages
 {
-    partial class EditProfileForm
+    partial class EditAgentProfileForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,8 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             labelEdit1 = new ReaLTaiizor.Controls.LabelEdit();
-            labelMunicipalRegistry = new ReaLTaiizor.Controls.FoxLabel();
-            labelCNPJ = new ReaLTaiizor.Controls.FoxLabel();
-            txtCNPJ = new ReaLTaiizor.Controls.HopeTextBox();
-            txtMuniciaplRegistry = new ReaLTaiizor.Controls.HopeTextBox();
-            dateTimeHospital = new ReaLTaiizor.Controls.PoisonDateTime();
+            labelCPF = new ReaLTaiizor.Controls.FoxLabel();
+            txtDocument = new ReaLTaiizor.Controls.HopeTextBox();
             lblCheckSimbolo = new ReaLTaiizor.Controls.FoxLabel();
             lblCheckNumero = new ReaLTaiizor.Controls.FoxLabel();
             lblCheckMinuscula = new ReaLTaiizor.Controls.FoxLabel();
@@ -50,11 +47,13 @@
             txtPassword = new ReaLTaiizor.Controls.HopeTextBox();
             txtUsername = new ReaLTaiizor.Controls.HopeTextBox();
             txtEmail = new ReaLTaiizor.Controls.HopeTextBox();
+            dateTimeHealthAgent = new ReaLTaiizor.Controls.PoisonDateTime();
             txtName = new ReaLTaiizor.Controls.HopeTextBox();
-            btnSalvar = new ReaLTaiizor.Controls.Button();
-            btnCancelar = new ReaLTaiizor.Controls.Button();
+            foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             pBoxEyeVisible = new PictureBox();
             pBoxEyeHidden = new PictureBox();
+            btnCancelar = new ReaLTaiizor.Controls.Button();
+            btnSalvar = new ReaLTaiizor.Controls.Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBoxEyeVisible).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBoxEyeHidden).BeginInit();
@@ -72,7 +71,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(565, 38);
-            tableLayoutPanel1.TabIndex = 9;
+            tableLayoutPanel1.TabIndex = 10;
             // 
             // labelEdit1
             // 
@@ -87,96 +86,51 @@
             labelEdit1.TabIndex = 1;
             labelEdit1.Text = "Edição de Dados do Usuário";
             // 
-            // labelMunicipalRegistry
+            // labelCPF
             // 
-            labelMunicipalRegistry.BackColor = Color.Transparent;
-            labelMunicipalRegistry.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelMunicipalRegistry.ForeColor = Color.Red;
-            labelMunicipalRegistry.Location = new Point(15, 366);
-            labelMunicipalRegistry.Name = "labelMunicipalRegistry";
-            labelMunicipalRegistry.Size = new Size(140, 19);
-            labelMunicipalRegistry.TabIndex = 46;
-            labelMunicipalRegistry.Text = "Máximo de 14 dígitos";
-            labelMunicipalRegistry.Visible = false;
+            labelCPF.BackColor = Color.Transparent;
+            labelCPF.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelCPF.ForeColor = Color.Red;
+            labelCPF.Location = new Point(14, 370);
+            labelCPF.Name = "labelCPF";
+            labelCPF.Size = new Size(196, 19);
+            labelCPF.TabIndex = 45;
+            labelCPF.Text = "Máximo de 11 dígitos";
+            labelCPF.Visible = false;
             // 
-            // labelCNPJ
+            // txtDocument
             // 
-            labelCNPJ.BackColor = Color.Transparent;
-            labelCNPJ.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelCNPJ.ForeColor = Color.Red;
-            labelCNPJ.Location = new Point(410, 365);
-            labelCNPJ.Name = "labelCNPJ";
-            labelCNPJ.Size = new Size(140, 19);
-            labelCNPJ.TabIndex = 45;
-            labelCNPJ.Text = "Máximo de 14 dígitos";
-            labelCNPJ.Visible = false;
-            // 
-            // txtCNPJ
-            // 
-            txtCNPJ.BackColor = Color.White;
-            txtCNPJ.BaseColor = Color.White;
-            txtCNPJ.BorderColorA = Color.FromArgb(64, 158, 255);
-            txtCNPJ.BorderColorB = Color.FromArgb(220, 223, 230);
-            txtCNPJ.Font = new Font("Segoe UI", 12F);
-            txtCNPJ.ForeColor = Color.Black;
-            txtCNPJ.Hint = "CNPJ";
-            txtCNPJ.Location = new Point(210, 322);
-            txtCNPJ.MaxLength = 32767;
-            txtCNPJ.Multiline = false;
-            txtCNPJ.Name = "txtCNPJ";
-            txtCNPJ.PasswordChar = '\0';
-            txtCNPJ.ScrollBars = ScrollBars.None;
-            txtCNPJ.SelectedText = "";
-            txtCNPJ.SelectionLength = 0;
-            txtCNPJ.SelectionStart = 0;
-            txtCNPJ.Size = new Size(343, 38);
-            txtCNPJ.TabIndex = 43;
-            txtCNPJ.TabStop = false;
-            txtCNPJ.UseSystemPasswordChar = false;
-            txtCNPJ.TextChanged += txtCNPJ_TextChanged;
-            // 
-            // txtMuniciaplRegistry
-            // 
-            txtMuniciaplRegistry.BackColor = Color.White;
-            txtMuniciaplRegistry.BaseColor = Color.White;
-            txtMuniciaplRegistry.BorderColorA = Color.FromArgb(64, 158, 255);
-            txtMuniciaplRegistry.BorderColorB = Color.FromArgb(220, 223, 230);
-            txtMuniciaplRegistry.Font = new Font("Segoe UI", 12F);
-            txtMuniciaplRegistry.ForeColor = Color.Black;
-            txtMuniciaplRegistry.Hint = "Registro Municipal";
-            txtMuniciaplRegistry.Location = new Point(15, 322);
-            txtMuniciaplRegistry.MaxLength = 32767;
-            txtMuniciaplRegistry.Multiline = false;
-            txtMuniciaplRegistry.Name = "txtMuniciaplRegistry";
-            txtMuniciaplRegistry.PasswordChar = '\0';
-            txtMuniciaplRegistry.ScrollBars = ScrollBars.None;
-            txtMuniciaplRegistry.SelectedText = "";
-            txtMuniciaplRegistry.SelectionLength = 0;
-            txtMuniciaplRegistry.SelectionStart = 0;
-            txtMuniciaplRegistry.Size = new Size(188, 38);
-            txtMuniciaplRegistry.TabIndex = 42;
-            txtMuniciaplRegistry.TabStop = false;
-            txtMuniciaplRegistry.UseSystemPasswordChar = false;
-            txtMuniciaplRegistry.TextChanged += txtMunicipalRegistry_TextChanged;
-            // 
-            // dateTimeHospital
-            // 
-            dateTimeHospital.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dateTimeHospital.Location = new Point(15, 391);
-            dateTimeHospital.MinimumSize = new Size(0, 29);
-            dateTimeHospital.Name = "dateTimeHospital";
-            dateTimeHospital.Size = new Size(285, 29);
-            dateTimeHospital.TabIndex = 44;
+            txtDocument.BackColor = Color.White;
+            txtDocument.BaseColor = Color.White;
+            txtDocument.BorderColorA = Color.FromArgb(64, 158, 255);
+            txtDocument.BorderColorB = Color.FromArgb(220, 223, 230);
+            txtDocument.Font = new Font("Segoe UI", 12F);
+            txtDocument.ForeColor = Color.Black;
+            txtDocument.Hint = "Documento (CPF)";
+            txtDocument.Location = new Point(11, 331);
+            txtDocument.MaxLength = 32767;
+            txtDocument.Multiline = false;
+            txtDocument.Name = "txtDocument";
+            txtDocument.PasswordChar = '\0';
+            txtDocument.ScrollBars = ScrollBars.None;
+            txtDocument.SelectedText = "";
+            txtDocument.SelectionLength = 0;
+            txtDocument.SelectionStart = 0;
+            txtDocument.Size = new Size(240, 38);
+            txtDocument.TabIndex = 42;
+            txtDocument.TabStop = false;
+            txtDocument.UseSystemPasswordChar = false;
+            txtDocument.TextChanged += txtDocument_TextChanged;
             // 
             // lblCheckSimbolo
             // 
             lblCheckSimbolo.BackColor = Color.Transparent;
             lblCheckSimbolo.Font = new Font("Segoe UI", 8.25F);
             lblCheckSimbolo.ForeColor = Color.Gray;
-            lblCheckSimbolo.Location = new Point(409, 174);
+            lblCheckSimbolo.Location = new Point(406, 183);
             lblCheckSimbolo.Name = "lblCheckSimbolo";
             lblCheckSimbolo.Size = new Size(61, 15);
-            lblCheckSimbolo.TabIndex = 51;
+            lblCheckSimbolo.TabIndex = 49;
             lblCheckSimbolo.Text = "• Simbolo";
             // 
             // lblCheckNumero
@@ -184,10 +138,10 @@
             lblCheckNumero.BackColor = Color.Transparent;
             lblCheckNumero.Font = new Font("Segoe UI", 8.25F);
             lblCheckNumero.ForeColor = Color.Gray;
-            lblCheckNumero.Location = new Point(350, 174);
+            lblCheckNumero.Location = new Point(347, 183);
             lblCheckNumero.Name = "lblCheckNumero";
             lblCheckNumero.Size = new Size(61, 15);
-            lblCheckNumero.TabIndex = 50;
+            lblCheckNumero.TabIndex = 48;
             lblCheckNumero.Text = "• Número";
             // 
             // lblCheckMinuscula
@@ -195,10 +149,10 @@
             lblCheckMinuscula.BackColor = Color.Transparent;
             lblCheckMinuscula.Font = new Font("Segoe UI", 8.25F);
             lblCheckMinuscula.ForeColor = Color.Gray;
-            lblCheckMinuscula.Location = new Point(244, 174);
+            lblCheckMinuscula.Location = new Point(241, 183);
             lblCheckMinuscula.Name = "lblCheckMinuscula";
             lblCheckMinuscula.Size = new Size(100, 15);
-            lblCheckMinuscula.TabIndex = 49;
+            lblCheckMinuscula.TabIndex = 47;
             lblCheckMinuscula.Text = "• Letra Minúscula";
             // 
             // lblCheckMaiuscula
@@ -206,10 +160,10 @@
             lblCheckMaiuscula.BackColor = Color.Transparent;
             lblCheckMaiuscula.Font = new Font("Segoe UI", 8.25F);
             lblCheckMaiuscula.ForeColor = Color.Gray;
-            lblCheckMaiuscula.Location = new Point(138, 174);
+            lblCheckMaiuscula.Location = new Point(135, 183);
             lblCheckMaiuscula.Name = "lblCheckMaiuscula";
             lblCheckMaiuscula.Size = new Size(100, 15);
-            lblCheckMaiuscula.TabIndex = 48;
+            lblCheckMaiuscula.TabIndex = 46;
             lblCheckMaiuscula.Text = "• Letra Maiúscula";
             // 
             // lblCheckTamanho
@@ -217,10 +171,10 @@
             lblCheckTamanho.BackColor = Color.Transparent;
             lblCheckTamanho.Font = new Font("Segoe UI", 8.25F);
             lblCheckTamanho.ForeColor = Color.Gray;
-            lblCheckTamanho.Location = new Point(15, 174);
+            lblCheckTamanho.Location = new Point(12, 183);
             lblCheckTamanho.Name = "lblCheckTamanho";
             lblCheckTamanho.Size = new Size(117, 15);
-            lblCheckTamanho.TabIndex = 47;
+            lblCheckTamanho.TabIndex = 44;
             lblCheckTamanho.Text = "• Mínimo 8 caracteres";
             // 
             // txtNeighborhood
@@ -232,7 +186,7 @@
             txtNeighborhood.Font = new Font("Segoe UI", 12F);
             txtNeighborhood.ForeColor = Color.FromArgb(48, 49, 51);
             txtNeighborhood.Hint = "Bairro";
-            txtNeighborhood.Location = new Point(15, 234);
+            txtNeighborhood.Location = new Point(12, 243);
             txtNeighborhood.MaxLength = 32767;
             txtNeighborhood.Multiline = false;
             txtNeighborhood.Name = "txtNeighborhood";
@@ -255,7 +209,7 @@
             txtComplement.Font = new Font("Segoe UI", 12F);
             txtComplement.ForeColor = Color.FromArgb(48, 49, 51);
             txtComplement.Hint = "Complemento";
-            txtComplement.Location = new Point(15, 278);
+            txtComplement.Location = new Point(12, 287);
             txtComplement.MaxLength = 32767;
             txtComplement.Multiline = false;
             txtComplement.Name = "txtComplement";
@@ -277,7 +231,7 @@
             comboBoxState.FormattingEnabled = true;
             comboBoxState.ItemHeight = 26;
             comboBoxState.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
-            comboBoxState.Location = new Point(432, 239);
+            comboBoxState.Location = new Point(429, 248);
             comboBoxState.Name = "comboBoxState";
             comboBoxState.Size = new Size(121, 32);
             comboBoxState.TabIndex = 40;
@@ -292,7 +246,7 @@
             txtCity.Font = new Font("Segoe UI", 12F);
             txtCity.ForeColor = Color.FromArgb(48, 49, 51);
             txtCity.Hint = "Cidade";
-            txtCity.Location = new Point(309, 236);
+            txtCity.Location = new Point(306, 245);
             txtCity.MaxLength = 32767;
             txtCity.Multiline = false;
             txtCity.Name = "txtCity";
@@ -315,7 +269,7 @@
             txtNumber.Font = new Font("Segoe UI", 12F);
             txtNumber.ForeColor = Color.FromArgb(48, 49, 51);
             txtNumber.Hint = "Nº";
-            txtNumber.Location = new Point(464, 190);
+            txtNumber.Location = new Point(464, 199);
             txtNumber.MaxLength = 32767;
             txtNumber.Multiline = false;
             txtNumber.Name = "txtNumber";
@@ -338,7 +292,7 @@
             txtStreet.Font = new Font("Segoe UI", 12F);
             txtStreet.ForeColor = Color.FromArgb(48, 49, 51);
             txtStreet.Hint = "Rua";
-            txtStreet.Location = new Point(138, 190);
+            txtStreet.Location = new Point(135, 199);
             txtStreet.MaxLength = 32767;
             txtStreet.Multiline = false;
             txtStreet.Name = "txtStreet";
@@ -361,7 +315,7 @@
             txtZipCode.Font = new Font("Segoe UI", 12F);
             txtZipCode.ForeColor = Color.FromArgb(48, 49, 51);
             txtZipCode.Hint = "CEP";
-            txtZipCode.Location = new Point(15, 190);
+            txtZipCode.Location = new Point(12, 199);
             txtZipCode.MaxLength = 32767;
             txtZipCode.Multiline = false;
             txtZipCode.Name = "txtZipCode";
@@ -384,7 +338,7 @@
             txtPassword.Font = new Font("Segoe UI", 12F);
             txtPassword.ForeColor = Color.FromArgb(48, 49, 51);
             txtPassword.Hint = "Senha";
-            txtPassword.Location = new Point(15, 132);
+            txtPassword.Location = new Point(12, 141);
             txtPassword.MaxLength = 32767;
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
@@ -408,7 +362,7 @@
             txtUsername.Font = new Font("Segoe UI", 12F);
             txtUsername.ForeColor = Color.FromArgb(48, 49, 51);
             txtUsername.Hint = "Login (nome de usuário)";
-            txtUsername.Location = new Point(326, 44);
+            txtUsername.Location = new Point(323, 53);
             txtUsername.MaxLength = 32767;
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
@@ -431,7 +385,7 @@
             txtEmail.Font = new Font("Segoe UI", 12F);
             txtEmail.ForeColor = Color.FromArgb(48, 49, 51);
             txtEmail.Hint = "Email";
-            txtEmail.Location = new Point(15, 88);
+            txtEmail.Location = new Point(12, 97);
             txtEmail.MaxLength = 32767;
             txtEmail.Multiline = false;
             txtEmail.Name = "txtEmail";
@@ -445,6 +399,15 @@
             txtEmail.TabStop = false;
             txtEmail.UseSystemPasswordChar = false;
             // 
+            // dateTimeHealthAgent
+            // 
+            dateTimeHealthAgent.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
+            dateTimeHealthAgent.Location = new Point(265, 340);
+            dateTimeHealthAgent.MinimumSize = new Size(0, 29);
+            dateTimeHealthAgent.Name = "dateTimeHealthAgent";
+            dateTimeHealthAgent.Size = new Size(285, 29);
+            dateTimeHealthAgent.TabIndex = 43;
+            // 
             // txtName
             // 
             txtName.BackColor = Color.White;
@@ -454,7 +417,7 @@
             txtName.Font = new Font("Segoe UI", 12F);
             txtName.ForeColor = Color.Black;
             txtName.Hint = "Nome";
-            txtName.Location = new Point(15, 44);
+            txtName.Location = new Point(12, 53);
             txtName.MaxLength = 32767;
             txtName.Multiline = false;
             txtName.Name = "txtName";
@@ -468,25 +431,42 @@
             txtName.TabStop = false;
             txtName.UseSystemPasswordChar = false;
             // 
-            // btnSalvar
+            // foxLabel1
             // 
-            btnSalvar.BackColor = Color.Transparent;
-            btnSalvar.BorderColor = Color.FromArgb(32, 34, 37);
-            btnSalvar.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            btnSalvar.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnSalvar.Font = new Font("Microsoft Sans Serif", 12F);
-            btnSalvar.Image = null;
-            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalvar.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnSalvar.Location = new Point(430, 486);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnSalvar.PressedColor = Color.FromArgb(165, 37, 37);
-            btnSalvar.Size = new Size(120, 40);
-            btnSalvar.TabIndex = 52;
-            btnSalvar.Text = "Salvar";
-            btnSalvar.TextAlignment = StringAlignment.Center;
-            btnSalvar.Click += btnSalvar_Click;
+            foxLabel1.BackColor = Color.Transparent;
+            foxLabel1.Font = new Font("Segoe UI", 8.25F);
+            foxLabel1.ForeColor = Color.Black;
+            foxLabel1.Location = new Point(265, 325);
+            foxLabel1.Name = "foxLabel1";
+            foxLabel1.Size = new Size(173, 15);
+            foxLabel1.TabIndex = 50;
+            foxLabel1.Text = "Data de nascimento";
+            // 
+            // pBoxEyeVisible
+            // 
+            pBoxEyeVisible.BackColor = Color.Transparent;
+            pBoxEyeVisible.BackgroundImage = Properties.Resources.eye_visible;
+            pBoxEyeVisible.BackgroundImageLayout = ImageLayout.Stretch;
+            pBoxEyeVisible.Cursor = Cursors.Hand;
+            pBoxEyeVisible.Location = new Point(510, 145);
+            pBoxEyeVisible.Name = "pBoxEyeVisible";
+            pBoxEyeVisible.Size = new Size(30, 30);
+            pBoxEyeVisible.TabIndex = 57;
+            pBoxEyeVisible.TabStop = false;
+            pBoxEyeVisible.Click += pBoxEyeVisible_Click;
+            // 
+            // pBoxEyeHidden
+            // 
+            pBoxEyeHidden.BackColor = Color.Transparent;
+            pBoxEyeHidden.BackgroundImage = Properties.Resources.eye_hidden;
+            pBoxEyeHidden.BackgroundImageLayout = ImageLayout.Stretch;
+            pBoxEyeHidden.Cursor = Cursors.Hand;
+            pBoxEyeHidden.Location = new Point(510, 145);
+            pBoxEyeHidden.Name = "pBoxEyeHidden";
+            pBoxEyeHidden.Size = new Size(30, 30);
+            pBoxEyeHidden.TabIndex = 56;
+            pBoxEyeHidden.TabStop = false;
+            pBoxEyeHidden.Click += pBoxEyeHidden_Click;
             // 
             // btnCancelar
             // 
@@ -498,54 +478,48 @@
             btnCancelar.Image = null;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnCancelar.Location = new Point(15, 486);
+            btnCancelar.Location = new Point(15, 481);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnCancelar.PressedColor = Color.FromArgb(165, 37, 37);
             btnCancelar.Size = new Size(120, 40);
-            btnCancelar.TabIndex = 53;
+            btnCancelar.TabIndex = 59;
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlignment = StringAlignment.Center;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // pBoxEyeVisible
+            // btnSalvar
             // 
-            pBoxEyeVisible.BackgroundImage = Properties.Resources.eye_visible;
-            pBoxEyeVisible.BackgroundImageLayout = ImageLayout.Stretch;
-            pBoxEyeVisible.Cursor = Cursors.Hand;
-            pBoxEyeVisible.Location = new Point(511, 137);
-            pBoxEyeVisible.Name = "pBoxEyeVisible";
-            pBoxEyeVisible.Size = new Size(30, 30);
-            pBoxEyeVisible.TabIndex = 55;
-            pBoxEyeVisible.TabStop = false;
-            pBoxEyeVisible.Click += pBoxEyeVisible_Click;
+            btnSalvar.BackColor = Color.Transparent;
+            btnSalvar.BorderColor = Color.FromArgb(32, 34, 37);
+            btnSalvar.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            btnSalvar.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnSalvar.Font = new Font("Microsoft Sans Serif", 12F);
+            btnSalvar.Image = null;
+            btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalvar.InactiveColor = Color.FromArgb(32, 34, 37);
+            btnSalvar.Location = new Point(430, 481);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnSalvar.PressedColor = Color.FromArgb(165, 37, 37);
+            btnSalvar.Size = new Size(120, 40);
+            btnSalvar.TabIndex = 58;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.TextAlignment = StringAlignment.Center;
+            btnSalvar.Click += btnSalvar_Click;
             // 
-            // pBoxEyeHidden
-            // 
-            pBoxEyeHidden.BackgroundImage = Properties.Resources.eye_hidden;
-            pBoxEyeHidden.BackgroundImageLayout = ImageLayout.Stretch;
-            pBoxEyeHidden.Cursor = Cursors.Hand;
-            pBoxEyeHidden.Location = new Point(511, 137);
-            pBoxEyeHidden.Name = "pBoxEyeHidden";
-            pBoxEyeHidden.Size = new Size(30, 30);
-            pBoxEyeHidden.TabIndex = 54;
-            pBoxEyeHidden.TabStop = false;
-            pBoxEyeHidden.Click += pBoxEyeHidden_Click;
-            // 
-            // EditProfileForm
+            // EditAgentProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(565, 533);
-            Controls.Add(pBoxEyeVisible);
-            Controls.Add(pBoxEyeHidden);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
-            Controls.Add(labelMunicipalRegistry);
-            Controls.Add(labelCNPJ);
-            Controls.Add(txtCNPJ);
-            Controls.Add(txtMuniciaplRegistry);
-            Controls.Add(dateTimeHospital);
+            Controls.Add(pBoxEyeVisible);
+            Controls.Add(pBoxEyeHidden);
+            Controls.Add(foxLabel1);
+            Controls.Add(labelCPF);
+            Controls.Add(txtDocument);
             Controls.Add(lblCheckSimbolo);
             Controls.Add(lblCheckNumero);
             Controls.Add(lblCheckMinuscula);
@@ -561,12 +535,13 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(txtEmail);
+            Controls.Add(dateTimeHealthAgent);
             Controls.Add(txtName);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "EditProfileForm";
+            Name = "EditAgentProfile";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EditProfileForm";
+            Text = "EditAgentProfile";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pBoxEyeVisible).EndInit();
@@ -578,11 +553,8 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private ReaLTaiizor.Controls.LabelEdit labelEdit1;
-        private ReaLTaiizor.Controls.FoxLabel labelMunicipalRegistry;
-        private ReaLTaiizor.Controls.FoxLabel labelCNPJ;
-        private ReaLTaiizor.Controls.HopeTextBox txtCNPJ;
-        private ReaLTaiizor.Controls.HopeTextBox txtMuniciaplRegistry;
-        private ReaLTaiizor.Controls.PoisonDateTime dateTimeHospital;
+        private ReaLTaiizor.Controls.FoxLabel labelCPF;
+        private ReaLTaiizor.Controls.HopeTextBox txtDocument;
         private ReaLTaiizor.Controls.FoxLabel lblCheckSimbolo;
         private ReaLTaiizor.Controls.FoxLabel lblCheckNumero;
         private ReaLTaiizor.Controls.FoxLabel lblCheckMinuscula;
@@ -598,10 +570,12 @@
         private ReaLTaiizor.Controls.HopeTextBox txtPassword;
         private ReaLTaiizor.Controls.HopeTextBox txtUsername;
         private ReaLTaiizor.Controls.HopeTextBox txtEmail;
+        private ReaLTaiizor.Controls.PoisonDateTime dateTimeHealthAgent;
         private ReaLTaiizor.Controls.HopeTextBox txtName;
-        private ReaLTaiizor.Controls.Button btnSalvar;
-        private ReaLTaiizor.Controls.Button btnCancelar;
+        private ReaLTaiizor.Controls.FoxLabel foxLabel1;
         private PictureBox pBoxEyeVisible;
         private PictureBox pBoxEyeHidden;
+        private ReaLTaiizor.Controls.Button btnCancelar;
+        private ReaLTaiizor.Controls.Button btnSalvar;
     }
 }

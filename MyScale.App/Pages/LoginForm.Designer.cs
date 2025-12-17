@@ -278,7 +278,6 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MyScale";
-            Load += LoginForm_Load;
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);

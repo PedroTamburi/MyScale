@@ -1,6 +1,6 @@
 ﻿namespace MyScale.App.Pages
 {
-    partial class InitialForm
+    partial class HospitalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            ReaLTaiizor.Controls.TabPage tabPageHealthAgent;
-            TabPage tabPagePlantao;
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            tabPage6 = new TabPage();
-            tabPage7 = new TabPage();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tabPageUser = new TabPage();
+            linkLblLogout = new ReaLTaiizor.Controls.LinkLabelEdit();
             lblMunicipalRegistry = new ReaLTaiizor.Controls.LabelEdit();
             lblComplement = new ReaLTaiizor.Controls.LabelEdit();
             lblZipCode = new ReaLTaiizor.Controls.LabelEdit();
@@ -49,7 +46,7 @@
             lblFoundationDate = new ReaLTaiizor.Controls.LabelEdit();
             lblCNPJ = new ReaLTaiizor.Controls.LabelEdit();
             lblEmail = new ReaLTaiizor.Controls.LabelEdit();
-            this.lblExcluirConta = new ReaLTaiizor.Controls.LabelEdit();
+            lblExcluirConta = new ReaLTaiizor.Controls.LabelEdit();
             lblEditar = new ReaLTaiizor.Controls.LabelEdit();
             hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
             lblUsername = new ReaLTaiizor.Controls.LabelEdit();
@@ -71,9 +68,6 @@
             gridShifts = new ReaLTaiizor.Controls.PoisonDataGridView();
             tabPageHospital = new ReaLTaiizor.Controls.TabPage();
             imageList1 = new ImageList(components);
-            tabPageHealthAgent = new ReaLTaiizor.Controls.TabPage();
-            tabPagePlantao = new TabPage();
-            tabPageHealthAgent.SuspendLayout();
             tabPageUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hopePictureBox1).BeginInit();
             tabPageShifts.SuspendLayout();
@@ -85,73 +79,10 @@
             tabPageHospital.SuspendLayout();
             SuspendLayout();
             // 
-            // tabPageHealthAgent
-            // 
-            tabPageHealthAgent.ActiveForeColor = Color.Black;
-            tabPageHealthAgent.ActiveLineTabColor = Color.MediumSeaGreen;
-            tabPageHealthAgent.ActiveTabColor = Color.SpringGreen;
-            tabPageHealthAgent.Alignment = TabAlignment.Left;
-            tabPageHealthAgent.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            tabPageHealthAgent.CompositingType = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-            tabPageHealthAgent.ControlBackColor = Color.MediumSeaGreen;
-            tabPageHealthAgent.Controls.Add(tabPagePlantao);
-            tabPageHealthAgent.Controls.Add(tabPage6);
-            tabPageHealthAgent.Controls.Add(tabPage7);
-            tabPageHealthAgent.DrawMode = TabDrawMode.OwnerDrawFixed;
-            tabPageHealthAgent.FrameColor = Color.MediumSeaGreen;
-            tabPageHealthAgent.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            tabPageHealthAgent.ItemSize = new Size(60, 150);
-            tabPageHealthAgent.LineColor = Color.MediumSeaGreen;
-            tabPageHealthAgent.LineTabColor = Color.SeaGreen;
-            tabPageHealthAgent.Location = new Point(2, 36);
-            tabPageHealthAgent.Multiline = true;
-            tabPageHealthAgent.Name = "tabPageHealthAgent";
-            tabPageHealthAgent.NormalForeColor = Color.White;
-            tabPageHealthAgent.PageColor = Color.DarkSlateGray;
-            tabPageHealthAgent.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            tabPageHealthAgent.SelectedIndex = 0;
-            tabPageHealthAgent.Size = new Size(1436, 862);
-            tabPageHealthAgent.SizeMode = TabSizeMode.Fixed;
-            tabPageHealthAgent.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            tabPageHealthAgent.StringType = StringAlignment.Near;
-            tabPageHealthAgent.TabColor = Color.SeaGreen;
-            tabPageHealthAgent.TabIndex = 1;
-            tabPageHealthAgent.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            tabPageHealthAgent.Visible = false;
-            // 
-            // tabPagePlantao
-            // 
-            tabPagePlantao.BackColor = Color.FromArgb(41, 50, 63);
-            tabPagePlantao.Location = new Point(154, 4);
-            tabPagePlantao.Name = "tabPagePlantao";
-            tabPagePlantao.Padding = new Padding(3);
-            tabPagePlantao.Size = new Size(1278, 854);
-            tabPagePlantao.TabIndex = 0;
-            tabPagePlantao.Text = "Cadastrar plantão";
-            // 
-            // tabPage6
-            // 
-            tabPage6.BackColor = Color.FromArgb(41, 50, 63);
-            tabPage6.Location = new Point(154, 4);
-            tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(1278, 854);
-            tabPage6.TabIndex = 1;
-            tabPage6.Text = "tabPage6";
-            // 
-            // tabPage7
-            // 
-            tabPage7.BackColor = Color.FromArgb(41, 50, 63);
-            tabPage7.Location = new Point(154, 4);
-            tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3);
-            tabPage7.Size = new Size(1278, 854);
-            tabPage7.TabIndex = 2;
-            tabPage7.Text = "tabPage7";
-            // 
             // tabPageUser
             // 
             tabPageUser.BackColor = Color.White;
+            tabPageUser.Controls.Add(linkLblLogout);
             tabPageUser.Controls.Add(lblMunicipalRegistry);
             tabPageUser.Controls.Add(lblComplement);
             tabPageUser.Controls.Add(lblZipCode);
@@ -164,7 +95,7 @@
             tabPageUser.Controls.Add(lblFoundationDate);
             tabPageUser.Controls.Add(lblCNPJ);
             tabPageUser.Controls.Add(lblEmail);
-            tabPageUser.Controls.Add(this.lblExcluirConta);
+            tabPageUser.Controls.Add(lblExcluirConta);
             tabPageUser.Controls.Add(lblEditar);
             tabPageUser.Controls.Add(hopePictureBox1);
             tabPageUser.Controls.Add(lblUsername);
@@ -174,6 +105,23 @@
             tabPageUser.Size = new Size(1278, 854);
             tabPageUser.TabIndex = 2;
             tabPageUser.Text = "Usuário";
+            // 
+            // linkLblLogout
+            // 
+            linkLblLogout.ActiveLinkColor = Color.FromArgb(153, 34, 34);
+            linkLblLogout.AutoSize = true;
+            linkLblLogout.BackColor = Color.Transparent;
+            linkLblLogout.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLblLogout.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkLblLogout.LinkColor = Color.FromArgb(32, 34, 37);
+            linkLblLogout.Location = new Point(19, 324);
+            linkLblLogout.Name = "linkLblLogout";
+            linkLblLogout.Size = new Size(124, 24);
+            linkLblLogout.TabIndex = 16;
+            linkLblLogout.TabStop = true;
+            linkLblLogout.Text = "Sair (logout)";
+            linkLblLogout.VisitedLinkColor = Color.FromArgb(32, 34, 37);
+            linkLblLogout.LinkClicked += linkLblLogout_LinkClicked;
             // 
             // lblMunicipalRegistry
             // 
@@ -321,28 +269,28 @@
             // 
             // lblExcluirConta
             // 
-            this.lblExcluirConta.AutoSize = true;
-            this.lblExcluirConta.BackColor = Color.Transparent;
-            this.lblExcluirConta.Cursor = Cursors.Hand;
-            this.lblExcluirConta.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            this.lblExcluirConta.ForeColor = Color.Black;
-            this.lblExcluirConta.Location = new Point(19, 293);
-            this.lblExcluirConta.Name = "lblExcluirConta";
-            this.lblExcluirConta.Size = new Size(172, 25);
-            this.lblExcluirConta.TabIndex = 3;
-            this.lblExcluirConta.Text = "Excluir Usuário";
-            this.lblExcluirConta.Click += this.lblExcluirConta_Click;
+            lblExcluirConta.AutoSize = true;
+            lblExcluirConta.BackColor = Color.Transparent;
+            lblExcluirConta.Cursor = Cursors.Hand;
+            lblExcluirConta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            lblExcluirConta.ForeColor = Color.Black;
+            lblExcluirConta.Location = new Point(19, 290);
+            lblExcluirConta.Name = "lblExcluirConta";
+            lblExcluirConta.Size = new Size(152, 24);
+            lblExcluirConta.TabIndex = 3;
+            lblExcluirConta.Text = "Excluir Usuário";
+            lblExcluirConta.Click += lblExcluirConta_Click;
             // 
             // lblEditar
             // 
             lblEditar.AutoSize = true;
             lblEditar.BackColor = Color.Transparent;
             lblEditar.Cursor = Cursors.Hand;
-            lblEditar.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
+            lblEditar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblEditar.ForeColor = Color.Black;
             lblEditar.Location = new Point(19, 256);
             lblEditar.Name = "lblEditar";
-            lblEditar.Size = new Size(209, 25);
+            lblEditar.Size = new Size(184, 24);
             lblEditar.TabIndex = 2;
             lblEditar.Text = "Editar informações";
             lblEditar.Click += labelEdit4_Click;
@@ -601,24 +549,24 @@
             gridShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
             gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.SeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            gridShifts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.SeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            gridShifts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             gridShifts.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.PaleGreen;
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            gridShifts.DefaultCellStyle = dataGridViewCellStyle5;
-            gridShifts.Dock = DockStyle.Top;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.PaleGreen;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            gridShifts.DefaultCellStyle = dataGridViewCellStyle2;
+            gridShifts.Dock = DockStyle.Fill;
             gridShifts.EnableHeadersVisualStyles = false;
             gridShifts.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             gridShifts.GridColor = Color.FromArgb(255, 255, 255);
@@ -627,18 +575,18 @@
             gridShifts.Name = "gridShifts";
             gridShifts.ReadOnly = true;
             gridShifts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            gridShifts.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            gridShifts.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             gridShifts.RowHeadersVisible = false;
             gridShifts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridShifts.Size = new Size(1258, 638);
+            gridShifts.Size = new Size(1258, 803);
             gridShifts.TabIndex = 0;
             gridShifts.CellDoubleClick += gridShifts_CellDoubleClick;
             // 
@@ -675,7 +623,6 @@
             tabPageHospital.TabColor = Color.SeaGreen;
             tabPageHospital.TabIndex = 0;
             tabPageHospital.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            tabPageHospital.Visible = false;
             // 
             // imageList1
             // 
@@ -683,7 +630,7 @@
             imageList1.ImageSize = new Size(32, 32);
             imageList1.TransparentColor = Color.Transparent;
             // 
-            // InitialForm
+            // HospitalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -691,13 +638,11 @@
             BorderColor = Color.Transparent;
             ClientSize = new Size(1440, 900);
             Controls.Add(tabPageHospital);
-            Controls.Add(tabPageHealthAgent);
             HeaderColor = Color.SeaGreen;
-            Name = "InitialForm";
+            Name = "HospitalForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MyScale";
             WindowState = FormWindowState.Maximized;
-            tabPageHealthAgent.ResumeLayout(false);
             tabPageUser.ResumeLayout(false);
             tabPageUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)hopePictureBox1).EndInit();
@@ -718,10 +663,6 @@
         private TabPage tabPageUser;
         private TabPage tabPageShifts;
         private ReaLTaiizor.Controls.TabPage tabPageHospital;
-        private ReaLTaiizor.Controls.TabPage tabPageHealthAgent;
-        private TabPage tabPagePlantao;
-        private TabPage tabPage6;
-        private TabPage tabPage7;
         private ImageList imageList1;
         private ReaLTaiizor.Controls.PoisonTabControl poisonTabControl1;
         private TabPage tabPage1;
@@ -755,5 +696,6 @@
         private ReaLTaiizor.Controls.LabelEdit lblCNPJ;
         private ReaLTaiizor.Controls.LabelEdit lblComplement;
         private ReaLTaiizor.Controls.LabelEdit lblMunicipalRegistry;
+        private ReaLTaiizor.Controls.LinkLabelEdit linkLblLogout;
     }
 }

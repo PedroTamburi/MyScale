@@ -63,6 +63,8 @@ namespace MyScale.App.Pages
             lblCheckMinuscula = new FoxLabel();
             lblCheckNumero = new FoxLabel();
             lblCheckSimbolo = new FoxLabel();
+            foxLabel2 = new FoxLabel();
+            foxLabel3 = new FoxLabel();
             pnlHospital.SuspendLayout();
             pnlHealthAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBoxEyeHidden).BeginInit();
@@ -216,6 +218,7 @@ namespace MyScale.App.Pages
             // pnlHospital
             // 
             pnlHospital.BackColor = Color.White;
+            pnlHospital.Controls.Add(foxLabel3);
             pnlHospital.Controls.Add(labelMunicipalRegistry);
             pnlHospital.Controls.Add(labelCNPJ);
             pnlHospital.Controls.Add(txtCNPJ);
@@ -307,7 +310,7 @@ namespace MyScale.App.Pages
             // dateTimeHospital
             // 
             dateTimeHospital.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dateTimeHospital.Location = new Point(3, 77);
+            dateTimeHospital.Location = new Point(3, 82);
             dateTimeHospital.MinimumSize = new Size(0, 29);
             dateTimeHospital.Name = "dateTimeHospital";
             dateTimeHospital.Size = new Size(285, 29);
@@ -316,6 +319,7 @@ namespace MyScale.App.Pages
             // pnlHealthAgent
             // 
             pnlHealthAgent.BackColor = Color.White;
+            pnlHealthAgent.Controls.Add(foxLabel2);
             pnlHealthAgent.Controls.Add(labelCPF);
             pnlHealthAgent.Controls.Add(dateTimeHealthAgent);
             pnlHealthAgent.Controls.Add(txtDocument);
@@ -343,7 +347,7 @@ namespace MyScale.App.Pages
             // dateTimeHealthAgent
             // 
             dateTimeHealthAgent.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dateTimeHealthAgent.Location = new Point(253, 8);
+            dateTimeHealthAgent.Location = new Point(256, 18);
             dateTimeHealthAgent.MinimumSize = new Size(0, 29);
             dateTimeHealthAgent.Name = "dateTimeHealthAgent";
             dateTimeHealthAgent.Size = new Size(285, 29);
@@ -619,12 +623,35 @@ namespace MyScale.App.Pages
             lblCheckSimbolo.TabIndex = 30;
             lblCheckSimbolo.Text = "• Simbolo";
             // 
+            // foxLabel2
+            // 
+            foxLabel2.BackColor = Color.Transparent;
+            foxLabel2.Font = new Font("Segoe UI", 8.25F);
+            foxLabel2.ForeColor = Color.Black;
+            foxLabel2.Location = new Point(256, 3);
+            foxLabel2.Name = "foxLabel2";
+            foxLabel2.Size = new Size(173, 15);
+            foxLabel2.TabIndex = 51;
+            foxLabel2.Text = "Data de nascimento";
+            // 
+            // foxLabel3
+            // 
+            foxLabel3.BackColor = Color.Transparent;
+            foxLabel3.Font = new Font("Segoe UI", 8.25F);
+            foxLabel3.ForeColor = Color.Black;
+            foxLabel3.Location = new Point(3, 66);
+            foxLabel3.Name = "foxLabel3";
+            foxLabel3.Size = new Size(173, 15);
+            foxLabel3.TabIndex = 51;
+            foxLabel3.Text = "Data de fundação";
+            // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(550, 583);
+            Controls.Add(pnlHospital);
             Controls.Add(lblCheckSimbolo);
             Controls.Add(lblCheckNumero);
             Controls.Add(lblCheckMinuscula);
@@ -632,8 +659,6 @@ namespace MyScale.App.Pages
             Controls.Add(lblCheckTamanho);
             Controls.Add(pBoxEyeVisible);
             Controls.Add(pBoxEyeHidden);
-            Controls.Add(pnlHospital);
-            Controls.Add(pnlHealthAgent);
             Controls.Add(txtNeighborhood);
             Controls.Add(btnRegister);
             Controls.Add(txtComplement);
@@ -649,6 +674,7 @@ namespace MyScale.App.Pages
             Controls.Add(radioHospital);
             Controls.Add(radioHealthAgent);
             Controls.Add(foxLabel1);
+            Controls.Add(pnlHealthAgent);
             ForeColor = SystemColors.ControlLightLight;
             HeaderColor = Color.SeaGreen;
             MaximizeBox = false;
@@ -708,5 +734,7 @@ namespace MyScale.App.Pages
         private FoxLabel lblCheckMinuscula;
         private FoxLabel lblCheckNumero;
         private FoxLabel lblCheckSimbolo;
+        private FoxLabel foxLabel2;
+        private FoxLabel foxLabel3;
     }
 }

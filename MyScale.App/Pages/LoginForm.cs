@@ -1,16 +1,13 @@
-﻿using MyScale.App.Pages;
+﻿using FluentValidation;
 using MyScale.Domain.Base;
 using MyScale.Domain.Entities;
 using MyScale.Domain.Interfaces;
 using MyScale.Domain.Models;
-using MyScale.Domain.Interfaces; 
-using MyScale.App; 
-using MyScale.Repository.Repository;
-using ReaLTaiizor.Colors;
-using ReaLTaiizor.Controls;
 using ReaLTaiizor.Forms;
-using ReaLTaiizor.Manager;
-using ReaLTaiizor.Util;
+using Microsoft.Extensions.DependencyInjection;
+using MyScale.App.Infra; 
+using MyScale.App.Pages; 
+using MyScale.Domain.Entities;
 
 
 namespace MyScale.App.Pages
@@ -19,17 +16,23 @@ namespace MyScale.App.Pages
     {
         private readonly IBaseRepository<Hospital> _hospitalRepository;
         private readonly IBaseRepository<HealthAgent> _agentRepository;
+        private readonly IValidator<Hospital> _hospitalValidator;
+        private readonly IValidator<HealthAgent> _healthAgentValidator;
         private readonly IMedicalShiftRepository _medicalShiftRepository;
 
         public LoginForm(
             IBaseRepository<Hospital> hospitalRepository, 
             IBaseRepository<HealthAgent> agentRepository, 
-            IMedicalShiftRepository medicalShiftRepository)
+            IMedicalShiftRepository medicalShiftRepository,
+            IValidator<Hospital> hospitalValidator,
+            IValidator<HealthAgent> healthAgentValidator)
         {
             InitializeComponent();
 
             _hospitalRepository = hospitalRepository;
             _agentRepository = agentRepository;
+            _hospitalValidator = hospitalValidator;
+            _healthAgentValidator = healthAgentValidator;
             _medicalShiftRepository = medicalShiftRepository;
 
             //tela
@@ -39,17 +42,40 @@ namespace MyScale.App.Pages
 
         private void AbrirSistema()
         {
-            this.Hide();
-
-            var initialForm = new InitialForm(_hospitalRepository, _agentRepository, _medicalShiftRepository);
-
-            if (GlobalSession.UsuarioLogado != null)
+            if (ConfigureDI.ServiceProvider == null)
             {
-                initialForm.LoadUser(GlobalSession.UsuarioLogado.Type.ToString());
+                MessageBox.Show("Erro Crítico: Serviços não configurados no Program.cs");
+                return;
             }
 
-            initialForm.ShowDialog();
-            this.Close();
+            this.Hide();
+
+            try
+            {
+                if (GlobalSession.IsHospital)
+                {
+                    // HOSPITAL
+                    var formHospital = ConfigureDI.ServiceProvider.GetRequiredService<HospitalForm>();
+
+                    formHospital.LoadUser(); // carrega os dados do hospital
+                    formHospital.ShowDialog(); 
+                }
+                else
+                {
+                    // AGENTE DE SAÚDE
+                    var formAgente = ConfigureDI.ServiceProvider.GetRequiredService<HealthAgentForm>();
+
+                    formAgente.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao abrir o sistema: {ex.Message}");
+            }
+            finally
+            {
+                this.Close();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -65,13 +91,11 @@ namespace MyScale.App.Pages
 
             try
             {
-                // 1. Tenta achar HOSPITAL
-                var hospital = _hospitalRepository.Select()
-                    .FirstOrDefault(h => (h.Email == email || h.CNPJ == email) && h.Password == senha);
+                // Tenta achar Hospital
+                var hospital = _hospitalRepository.Select().FirstOrDefault(h => (h.Email == email || h.CNPJ == email) && h.Password == senha);
 
                 if (hospital != null)
                 {
-                    // Preenche a Sessão
                     GlobalSession.UsuarioLogado = new LoggedUser
                     {
                         Id = hospital.Id,
@@ -80,13 +104,12 @@ namespace MyScale.App.Pages
                         Type = UserType.Hospital
                     };
 
-                    AbrirSistema(); 
+                    AbrirSistema();
                     return;
                 }
 
-                // 2. Tenta achar AGENTE DE SAÚDE
-                var agente = _agentRepository.Select()
-                    .FirstOrDefault(a => (a.Email == email || a.Document == email) && a.Password == senha);
+                // Tenta achar HelthAgent
+                var agente = _agentRepository.Select().FirstOrDefault(a => (a.Email == email || a.Document == email) && a.Password == senha);
 
                 if (agente != null)
                 {
@@ -109,9 +132,10 @@ namespace MyScale.App.Pages
                 MessageBox.Show($"Erro: {ex.Message}");
             }
         }
+
         private void foxButton1_Click(object sender, EventArgs e)
         {
-            using (var registerForm = new RegisterForm(_hospitalRepository, _agentRepository))
+            using (var registerForm = new RegisterForm(_hospitalRepository, _agentRepository, _hospitalValidator, _healthAgentValidator))
             {
                 registerForm.ShowDialog();
             }
@@ -132,9 +156,5 @@ namespace MyScale.App.Pages
             txtPassword.UseSystemPasswordChar = true;
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

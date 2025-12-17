@@ -6,12 +6,12 @@ using System.Text.RegularExpressions;
 
 namespace MyScale.App.Pages
 {
-    public partial class EditProfileForm : Form
+    public partial class EditHospitalProfileForm : Form
     {
         private readonly IBaseRepository<Hospital> _repository;
         private readonly int _hospitalId;
         private Hospital _hospitalAtual;
-        public EditProfileForm(int hospitalId, IBaseRepository<Hospital> repository)
+        public EditHospitalProfileForm(int hospitalId, IBaseRepository<Hospital> repository)
         {
             InitializeComponent();
             _hospitalId = hospitalId;

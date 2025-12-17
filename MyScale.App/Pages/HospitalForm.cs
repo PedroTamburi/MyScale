@@ -1,5 +1,4 @@
-﻿using MyScale.App.UseCases.Commands.Shifts;
-using MyScale.Domain.Base;
+﻿using MyScale.Domain.Base;
 using MyScale.Domain.Entities;
 using ReaLTaiizor.Forms;
 using MyScale.Domain.Interfaces;
@@ -8,57 +7,39 @@ using ReaLTaiizor.Manager;
 
 namespace MyScale.App.Pages
 {
-    public partial class InitialForm : LostForm
+    public partial class HospitalForm : LostForm
     {
         private readonly IBaseRepository<Hospital> _hospitalRepository;
-        private readonly IBaseRepository<HealthAgent> _agentRepository;
         private readonly IMedicalShiftRepository _medicalShiftRepository;
 
         private DateTime? _startTimeShiftSelected;
         private DateTime? _endTimeShiftSelected;
-        private DateTime? _baseDateSelected;
 
-        public string UserProfile { get; private set; }
-        public InitialForm(
+        public HospitalForm(
             IBaseRepository<Hospital> hospitalRepository,
-            IBaseRepository<HealthAgent> agentRepository,
             IMedicalShiftRepository medicalShiftRepository)
         {
             InitializeComponent();
+
+            // tela
             poisonPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             gridShifts.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
+            // DI
             _hospitalRepository = hospitalRepository;
-            _agentRepository = agentRepository;
             _medicalShiftRepository = medicalShiftRepository;
         }
-        #region plantoes
-        #region criar plantão
-        #region metodos
-        public async void LoadUser(string userType)
-        {
-            UserProfile = userType;
-            this.Text = $"MyScale - Acesso: {userType}";
-            AccessConfiguration();
 
-            if (GlobalSession.IsHospital)
-            {
-                await CarregarPlantoesHospital();
-                CarregarDadosPerfil();
-            }
+        #region Métodos de Carregamento (LoadUser)
+
+        public async void LoadUser()
+        {
+            this.Text = $"MyScale - Hospital";
+
+            await CarregarPlantoesHospital();
+            CarregarDadosPerfil();
         }
 
-        private void AccessConfiguration()
-        {
-            if (GlobalSession.IsHospital || UserProfile == "Hospital")
-            {
-                tabPageHospital.Visible = true;
-            }
-            else
-            {
-                tabPageHealthAgent.Visible = true;
-            }
-        }
         private void Clean()
         {
             txtPaymentAmount.Text = "";
@@ -71,7 +52,9 @@ namespace MyScale.App.Pages
             _endTimeShiftSelected = null;
         }
         #endregion
-        #region eventos
+
+        #region Criar Plantão (Lógica do Calendário e Botão)
+
         private void btnCalendario_Click(object sender, EventArgs e)
         {
             using (var formCalendario = new calendarForm())
@@ -136,11 +119,12 @@ namespace MyScale.App.Pages
                     paymentAmount: valorPagamento,
                     hospitalId: GlobalSession.UserId
                 );
+
                 await _medicalShiftRepository.AddAsync(novoPlantao);
 
                 MessageBox.Show("Plantão criado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clean();
-                CarregarPlantoesHospital();
+                await CarregarPlantoesHospital(); // Atualiza a lista
             }
             catch (Exception ex)
             {
@@ -148,19 +132,17 @@ namespace MyScale.App.Pages
             }
         }
         #endregion
-        #endregion
 
-        #region consultar plantões
+        #region Consultar Plantões (Grid)
+
         private async Task CarregarPlantoesHospital()
         {
             try
             {
-                if (!GlobalSession.IsHospital) return;
-
+                // Busca plantões criados por este hospital (GlobalSession.UserId)
                 var listaPlantoes = await _medicalShiftRepository.GetByHospitalIdAsync(GlobalSession.UserId);
 
                 gridShifts.DataSource = listaPlantoes;
-
                 ConfigurarGrid();
             }
             catch (Exception ex)
@@ -171,7 +153,6 @@ namespace MyScale.App.Pages
 
         private void ConfigurarGrid()
         {
-            // 1. LIMPEZA GERAL
             gridShifts.AutoGenerateColumns = true;
             gridShifts.ReadOnly = true;
             gridShifts.AllowUserToAddRows = false;
@@ -181,14 +162,14 @@ namespace MyScale.App.Pages
             gridShifts.RowHeadersVisible = false;
             gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // 2. ESTILO DO CABEÇALHO
+            // Estilo
             gridShifts.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             gridShifts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gridShifts.ColumnHeadersHeight = 35;
             gridShifts.EnableHeadersVisualStyles = false;
             gridShifts.ColumnHeadersDefaultCellStyle.BackColor = Color.SeaGreen;
 
-            // 3. OCULTAR COLUNAS TÉCNICAS (IDs, Chaves estrangeiras, Datas de log)
+            // Colunas para Ocultar
             OcultarColuna("Id");
             OcultarColuna("HospitalId");
             OcultarColuna("HealthAgentId");
@@ -197,25 +178,23 @@ namespace MyScale.App.Pages
             OcultarColuna("CreatedDate");
             OcultarColuna("UpdatedDate");
 
-            // 4. FORMATAR E RENOMEAR COLUNAS 
+            // Colunas para Formatar
             ConfigurarColuna("Date", "Data", "dd/MM/yyyy");
             ConfigurarColuna("StartTime", "Início", "HH:mm");
             ConfigurarColuna("EndTime", "Fim", "HH:mm");
             ConfigurarColuna("PaymentAmount", "Valor", "C2");
-            ConfigurarColuna("IsOpen", "Disponível", "null");
+            ConfigurarColuna("IsOpen", "Disponível", "null"); // True/False
 
+            // Ordem
             if (gridShifts.Columns["Date"] != null) gridShifts.Columns["Date"].DisplayIndex = 0;
             if (gridShifts.Columns["StartTime"] != null) gridShifts.Columns["StartTime"].DisplayIndex = 1;
             if (gridShifts.Columns["EndTime"] != null) gridShifts.Columns["EndTime"].DisplayIndex = 2;
-
         }
 
         private void OcultarColuna(string nomeColuna)
         {
             if (gridShifts.Columns[nomeColuna] != null)
-            {
                 gridShifts.Columns[nomeColuna].Visible = false;
-            }
         }
 
         private void ConfigurarColuna(string nomeColuna, string novoTitulo, string formato)
@@ -228,9 +207,6 @@ namespace MyScale.App.Pages
             }
         }
 
-        #endregion
-
-        #region editar plantoes
         private void gridShifts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -243,22 +219,19 @@ namespace MyScale.App.Pages
 
                     if (resultado == DialogResult.OK)
                     {
-                        CarregarPlantoesHospital();
+                        _ = CarregarPlantoesHospital();
                     }
                 }
             }
         }
         #endregion
-        #endregion
 
-        #region usuario
+        #region Perfil do Hospital
 
         private void CarregarDadosPerfil()
         {
             try
             {
-                if (!GlobalSession.IsHospital) return;
-
                 var hospital = _hospitalRepository.Select(GlobalSession.UserId);
 
                 if (hospital != null)
@@ -266,11 +239,7 @@ namespace MyScale.App.Pages
                     lblName.Text = $"Nome: {hospital.Name}";
                     lblMunicipalRegistry.Text = $"Registro Municipal: {hospital.MunicipalRegistry}";
                     lblCNPJ.Text = $"CNPJ: {hospital.CNPJ}";
-
-                    // Se for DateTime: .ToString("dd/MM/yyyy")
-                    // Se for DateOnly: .ToString() ou interpolado como abaixo
                     lblFoundationDate.Text = $"Data de fundação: {hospital.FoundationDate:dd/MM/yyyy}";
-
                     lblEmail.Text = $"Email: {hospital.Email}";
                     lblUsername.Text = hospital.Username;
 
@@ -290,12 +259,9 @@ namespace MyScale.App.Pages
             }
         }
 
-
-        #endregion
-
         private void labelEdit4_Click(object sender, EventArgs e)
         {
-            using (var formEdicao = new EditProfileForm(GlobalSession.UserId, _hospitalRepository))
+            using (var formEdicao = new EditHospitalProfileForm(GlobalSession.UserId, _hospitalRepository))
             {
                 var resultado = formEdicao.ShowDialog();
 
@@ -321,17 +287,17 @@ namespace MyScale.App.Pages
             {
                 try
                 {
+                    // 1. Apaga plantões
                     var plantoes = await _medicalShiftRepository.GetByHospitalIdAsync(GlobalSession.UserId);
-
                     foreach (var plantao in plantoes)
                     {
                         await _medicalShiftRepository.DeleteAsync(plantao.Id);
                     }
 
+                    // 2. Apaga o Hospital
                     _hospitalRepository.Delete(GlobalSession.UserId);
 
                     MessageBox.Show("Conta excluída com sucesso.", "Adeus!");
-
                     System.Windows.Forms.Application.Restart();
                 }
                 catch (Exception ex)
@@ -340,6 +306,23 @@ namespace MyScale.App.Pages
                 }
             }
         }
+
+        private void linkLblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var resposta = MessageBox.Show(
+                "Tem certeza que deseja sair do sistema?",
+                "Fazer Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resposta == DialogResult.Yes)
+            {
+                GlobalSession.UsuarioLogado = null;
+
+                System.Windows.Forms.Application.Restart();
+            }
+        }
+        #endregion
     }
 }
-    

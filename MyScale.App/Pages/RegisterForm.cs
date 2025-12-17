@@ -27,15 +27,18 @@ namespace MyScale.App.Pages
         private readonly IValidator<Hospital> _hospitalValidator;
         private readonly IValidator<HealthAgent> _agentValidator;
 
-        public RegisterForm(IBaseRepository<Hospital> hospitalRepository, IBaseRepository<HealthAgent> agentRepository)
+        public RegisterForm(IBaseRepository<Hospital> hospitalRepository, 
+            IBaseRepository<HealthAgent> agentRepository, 
+            IValidator<Hospital> hospitalValidator, 
+            IValidator<HealthAgent> healthAgentValidator)
         {
             InitializeComponent();
 
             _hospitalRepository = hospitalRepository;
             _agentRepository = agentRepository;
 
-            _hospitalValidator = new HospitalValidator();
-            _agentValidator = new HealthAgentValidator();
+            _hospitalValidator = hospitalValidator;
+            _agentValidator = healthAgentValidator;
 
             // tela
             pnlHealthAgent.Visible = false;
