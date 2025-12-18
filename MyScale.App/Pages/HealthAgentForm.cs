@@ -284,5 +284,26 @@ namespace MyScale.App.Pages
         #endregion
 
 
+        private void gridMyShifts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            // id da linha clicada
+            var row = gridMyShifts.Rows[e.RowIndex];
+            if (row.Cells["Id"].Value == null) return;
+
+            int shiftId = (int)row.Cells["Id"].Value;
+
+            using (var infoForm = new ShiftInformationForm(shiftId, _medicalShiftRepository))
+            {
+                var result = infoForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    CarregarMeusPlantoes();       
+                    CarregarPlantoesDisponiveis();
+                }
+            }
+        }
     }
 }

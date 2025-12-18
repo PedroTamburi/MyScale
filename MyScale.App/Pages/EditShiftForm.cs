@@ -24,11 +24,11 @@ namespace MyScale.App.Pages
             _shiftId = shiftId;
             _repository = repository;
         }
-        private async void EditShiftForm_Load(object sender, EventArgs e)
+        private void EditShiftForm_Load(object sender, EventArgs e)
         {
             try
             {
-                _plantaoAtual = await _repository.GetByIdAsync(_shiftId);
+                _plantaoAtual = _repository.Select(_shiftId);
 
                 if (_plantaoAtual == null)
                 {
@@ -70,25 +70,30 @@ namespace MyScale.App.Pages
             }
         }
 
-        private async void btnSalvar_Click(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
+                // valida valor
                 if (!decimal.TryParse(txtPaymentAmount.Text, out decimal novoValor))
                 {
-                    MessageBox.Show("Valor inválido. Digite somente números e virgula!");
+                    MessageBox.Show("Valor inválido. Digite somente números e vírgula!");
+                    return;
+                }
+                
+                // valida horario
+                if (_novaDataInicio.TimeOfDay >= _novaDataFim.TimeOfDay)
+                {
+                    MessageBox.Show("O horário final deve ser maior que o inicial.");
                     return;
                 }
 
-                _plantaoAtual.Update(
-                    _novaDataInicio,
-                    _novaDataFim,
-                    DateOnly.FromDateTime(_novaDataInicio),
-                    novoValor
-                );
+                _plantaoAtual.StartTime = _novaDataInicio;
+                _plantaoAtual.EndTime = _novaDataFim;
+                _plantaoAtual.Date = DateOnly.FromDateTime(_novaDataInicio);
+                _plantaoAtual.PaymentAmount = novoValor;
 
-                // Manda o repositório salvar
-                await _repository.UpdateAsync(_plantaoAtual);
+                _repository.Update(_plantaoAtual);
 
                 MessageBox.Show("Plantão atualizado com sucesso!");
                 this.DialogResult = DialogResult.OK;
@@ -105,12 +110,18 @@ namespace MyScale.App.Pages
             this.Close();
         }
 
-        private async void btnExcluir_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (_plantaoAtual.HealthAgentId != null)
+            {
+                MessageBox.Show("Você não pode excluir um plantão que já foi aceito por um agente!");
+                return;
+            }
+
             var confirm = MessageBox.Show("Tem certeza que deseja excluir este plantão?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
-                await _repository.DeleteAsync(_shiftId);
+                _repository.Delete(_shiftId);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

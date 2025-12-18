@@ -47,6 +47,10 @@
             lblState = new ReaLTaiizor.Controls.LabelEdit();
             lblZipCode = new ReaLTaiizor.Controls.LabelEdit();
             lblComplement = new ReaLTaiizor.Controls.LabelEdit();
+            labelEdit4 = new ReaLTaiizor.Controls.LabelEdit();
+            lblHour = new ReaLTaiizor.Controls.LabelEdit();
+            lblDate = new ReaLTaiizor.Controls.LabelEdit();
+            lblPaymentAmount = new ReaLTaiizor.Controls.LabelEdit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -87,7 +91,7 @@
             button1.Image = null;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.InactiveColor = Color.FromArgb(32, 34, 37);
-            button1.Location = new Point(298, 415);
+            button1.Location = new Point(298, 512);
             button1.Name = "button1";
             button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
             button1.PressedColor = Color.FromArgb(165, 37, 37);
@@ -95,6 +99,7 @@
             button1.TabIndex = 1;
             button1.Text = "Desistir do plantão";
             button1.TextAlignment = StringAlignment.Center;
+            button1.Click += btnDesistir_Click;
             // 
             // button2
             // 
@@ -106,7 +111,7 @@
             button2.Image = null;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.InactiveColor = Color.FromArgb(32, 34, 37);
-            button2.Location = new Point(12, 415);
+            button2.Location = new Point(12, 512);
             button2.Name = "button2";
             button2.PressedBorderColor = Color.FromArgb(165, 37, 37);
             button2.PressedColor = Color.FromArgb(165, 37, 37);
@@ -114,6 +119,7 @@
             button2.TabIndex = 2;
             button2.Text = "Voltar";
             button2.TextAlignment = StringAlignment.Center;
+            button2.Click += btnVoltar_Click;
             // 
             // labelEdit2
             // 
@@ -122,7 +128,7 @@
             labelEdit2.BackColor = Color.Transparent;
             labelEdit2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelEdit2.ForeColor = Color.DarkTurquoise;
-            labelEdit2.Location = new Point(12, 40);
+            labelEdit2.Location = new Point(12, 50);
             labelEdit2.Name = "labelEdit2";
             labelEdit2.Size = new Size(235, 24);
             labelEdit2.TabIndex = 3;
@@ -135,7 +141,7 @@
             lblName.BackColor = Color.Transparent;
             lblName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblName.ForeColor = Color.Black;
-            lblName.Location = new Point(12, 64);
+            lblName.Location = new Point(12, 74);
             lblName.Name = "lblName";
             lblName.Size = new Size(65, 20);
             lblName.TabIndex = 4;
@@ -148,7 +154,7 @@
             lblMunicipalRegistry.BackColor = Color.Transparent;
             lblMunicipalRegistry.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMunicipalRegistry.ForeColor = Color.Black;
-            lblMunicipalRegistry.Location = new Point(12, 84);
+            lblMunicipalRegistry.Location = new Point(12, 94);
             lblMunicipalRegistry.Name = "lblMunicipalRegistry";
             lblMunicipalRegistry.Size = new Size(162, 20);
             lblMunicipalRegistry.TabIndex = 5;
@@ -161,7 +167,7 @@
             lblCNPJ.BackColor = Color.Transparent;
             lblCNPJ.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCNPJ.ForeColor = Color.Black;
-            lblCNPJ.Location = new Point(12, 104);
+            lblCNPJ.Location = new Point(12, 114);
             lblCNPJ.Name = "lblCNPJ";
             lblCNPJ.Size = new Size(58, 20);
             lblCNPJ.TabIndex = 6;
@@ -174,7 +180,7 @@
             lblFoundationDate.BackColor = Color.Transparent;
             lblFoundationDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFoundationDate.ForeColor = Color.Black;
-            lblFoundationDate.Location = new Point(12, 124);
+            lblFoundationDate.Location = new Point(12, 134);
             lblFoundationDate.Name = "lblFoundationDate";
             lblFoundationDate.Size = new Size(163, 20);
             lblFoundationDate.TabIndex = 7;
@@ -187,7 +193,7 @@
             lblEmail.BackColor = Color.Transparent;
             lblEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEmail.ForeColor = Color.Black;
-            lblEmail.Location = new Point(12, 144);
+            lblEmail.Location = new Point(12, 154);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(58, 20);
             lblEmail.TabIndex = 8;
@@ -200,7 +206,7 @@
             lblRegisterDate.BackColor = Color.Transparent;
             lblRegisterDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRegisterDate.ForeColor = Color.Black;
-            lblRegisterDate.Location = new Point(12, 164);
+            lblRegisterDate.Location = new Point(12, 174);
             lblRegisterDate.Name = "lblRegisterDate";
             lblRegisterDate.Size = new Size(149, 20);
             lblRegisterDate.TabIndex = 9;
@@ -213,7 +219,7 @@
             labelEdit3.BackColor = Color.Transparent;
             labelEdit3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelEdit3.ForeColor = Color.DarkTurquoise;
-            labelEdit3.Location = new Point(12, 189);
+            labelEdit3.Location = new Point(12, 199);
             labelEdit3.Name = "labelEdit3";
             labelEdit3.Size = new Size(102, 24);
             labelEdit3.TabIndex = 10;
@@ -226,7 +232,7 @@
             lblStreet.BackColor = Color.Transparent;
             lblStreet.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblStreet.ForeColor = Color.Black;
-            lblStreet.Location = new Point(12, 213);
+            lblStreet.Location = new Point(12, 223);
             lblStreet.Name = "lblStreet";
             lblStreet.Size = new Size(47, 20);
             lblStreet.TabIndex = 11;
@@ -239,7 +245,7 @@
             lblNeighborhood.BackColor = Color.Transparent;
             lblNeighborhood.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNeighborhood.ForeColor = Color.Black;
-            lblNeighborhood.Location = new Point(12, 253);
+            lblNeighborhood.Location = new Point(12, 263);
             lblNeighborhood.Name = "lblNeighborhood";
             lblNeighborhood.Size = new Size(62, 20);
             lblNeighborhood.TabIndex = 12;
@@ -252,7 +258,7 @@
             lblNumber.BackColor = Color.Transparent;
             lblNumber.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNumber.ForeColor = Color.Black;
-            lblNumber.Location = new Point(12, 233);
+            lblNumber.Location = new Point(12, 243);
             lblNumber.Name = "lblNumber";
             lblNumber.Size = new Size(33, 20);
             lblNumber.TabIndex = 13;
@@ -265,7 +271,7 @@
             lblCity.BackColor = Color.Transparent;
             lblCity.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCity.ForeColor = Color.Black;
-            lblCity.Location = new Point(12, 273);
+            lblCity.Location = new Point(12, 283);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(75, 20);
             lblCity.TabIndex = 14;
@@ -278,7 +284,7 @@
             lblState.BackColor = Color.Transparent;
             lblState.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblState.ForeColor = Color.Black;
-            lblState.Location = new Point(12, 293);
+            lblState.Location = new Point(12, 303);
             lblState.Name = "lblState";
             lblState.Size = new Size(76, 20);
             lblState.TabIndex = 15;
@@ -291,7 +297,7 @@
             lblZipCode.BackColor = Color.Transparent;
             lblZipCode.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblZipCode.ForeColor = Color.Black;
-            lblZipCode.Location = new Point(12, 313);
+            lblZipCode.Location = new Point(12, 323);
             lblZipCode.Name = "lblZipCode";
             lblZipCode.Size = new Size(49, 20);
             lblZipCode.TabIndex = 16;
@@ -304,17 +310,73 @@
             lblComplement.BackColor = Color.Transparent;
             lblComplement.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblComplement.ForeColor = Color.Black;
-            lblComplement.Location = new Point(12, 333);
+            lblComplement.Location = new Point(12, 343);
             lblComplement.Name = "lblComplement";
             lblComplement.Size = new Size(124, 20);
             lblComplement.TabIndex = 17;
             lblComplement.Text = "Complemento:";
             // 
+            // labelEdit4
+            // 
+            labelEdit4.Anchor = AnchorStyles.None;
+            labelEdit4.AutoSize = true;
+            labelEdit4.BackColor = Color.Transparent;
+            labelEdit4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelEdit4.ForeColor = Color.DarkTurquoise;
+            labelEdit4.Location = new Point(12, 378);
+            labelEdit4.Name = "labelEdit4";
+            labelEdit4.Size = new Size(229, 24);
+            labelEdit4.TabIndex = 18;
+            labelEdit4.Text = "Informações do Plantão";
+            // 
+            // lblHour
+            // 
+            lblHour.Anchor = AnchorStyles.None;
+            lblHour.AutoSize = true;
+            lblHour.BackColor = Color.Transparent;
+            lblHour.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHour.ForeColor = Color.Black;
+            lblHour.Location = new Point(12, 442);
+            lblHour.Name = "lblHour";
+            lblHour.Size = new Size(73, 20);
+            lblHour.TabIndex = 21;
+            lblHour.Text = "Horário:";
+            // 
+            // lblDate
+            // 
+            lblDate.Anchor = AnchorStyles.None;
+            lblDate.AutoSize = true;
+            lblDate.BackColor = Color.Transparent;
+            lblDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDate.ForeColor = Color.Black;
+            lblDate.Location = new Point(12, 422);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(53, 20);
+            lblDate.TabIndex = 20;
+            lblDate.Text = "Data:";
+            // 
+            // lblPaymentAmount
+            // 
+            lblPaymentAmount.Anchor = AnchorStyles.None;
+            lblPaymentAmount.AutoSize = true;
+            lblPaymentAmount.BackColor = Color.Transparent;
+            lblPaymentAmount.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPaymentAmount.ForeColor = Color.Black;
+            lblPaymentAmount.Location = new Point(12, 402);
+            lblPaymentAmount.Name = "lblPaymentAmount";
+            lblPaymentAmount.Size = new Size(61, 20);
+            lblPaymentAmount.TabIndex = 19;
+            lblPaymentAmount.Text = "Valor: ";
+            // 
             // ShiftInformationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(430, 467);
+            ClientSize = new Size(430, 564);
+            Controls.Add(lblHour);
+            Controls.Add(lblDate);
+            Controls.Add(lblPaymentAmount);
+            Controls.Add(labelEdit4);
             Controls.Add(lblComplement);
             Controls.Add(lblZipCode);
             Controls.Add(lblState);
@@ -335,6 +397,7 @@
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ShiftInformationForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ShiftInformationForm";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -363,5 +426,9 @@
         private ReaLTaiizor.Controls.LabelEdit lblState;
         private ReaLTaiizor.Controls.LabelEdit lblZipCode;
         private ReaLTaiizor.Controls.LabelEdit lblComplement;
+        private ReaLTaiizor.Controls.LabelEdit labelEdit4;
+        private ReaLTaiizor.Controls.LabelEdit lblHour;
+        private ReaLTaiizor.Controls.LabelEdit lblDate;
+        private ReaLTaiizor.Controls.LabelEdit lblPaymentAmount;
     }
 }

@@ -250,6 +250,7 @@
             gridMyShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gridMyShifts.Size = new Size(1283, 763);
             gridMyShifts.TabIndex = 1;
+            gridMyShifts.CellDoubleClick += gridMyShifts_CellDoubleClick;
             // 
             // tabPageUser
             // 

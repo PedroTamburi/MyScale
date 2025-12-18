@@ -81,7 +81,7 @@
             // 
             // tabPageUser
             // 
-            tabPageUser.BackColor = Color.White;
+            tabPageUser.BackColor = Color.FromArgb(41, 50, 63);
             tabPageUser.Controls.Add(linkLblLogout);
             tabPageUser.Controls.Add(lblMunicipalRegistry);
             tabPageUser.Controls.Add(lblComplement);
@@ -323,7 +323,7 @@
             // 
             // tabPageShifts
             // 
-            tabPageShifts.BackColor = Color.White;
+            tabPageShifts.BackColor = Color.FromArgb(41, 50, 63);
             tabPageShifts.Controls.Add(poisonTabControl1);
             tabPageShifts.Location = new Point(154, 4);
             tabPageShifts.Name = "tabPageShifts";
@@ -531,10 +531,10 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(gridShifts);
-            tabPage2.Location = new Point(4, 35);
+            tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1264, 809);
+            tabPage2.Size = new Size(1264, 806);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Consultar plantões";
             tabPage2.UseVisualStyleBackColor = true;
@@ -547,6 +547,7 @@
             gridShifts.AllowUserToResizeRows = false;
             gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
+            gridShifts.BorderStyle = BorderStyle.None;
             gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -586,9 +587,10 @@
             gridShifts.RowHeadersVisible = false;
             gridShifts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             gridShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridShifts.Size = new Size(1258, 803);
+            gridShifts.Size = new Size(1258, 800);
             gridShifts.TabIndex = 0;
             gridShifts.CellDoubleClick += gridShifts_CellDoubleClick;
+            gridShifts.CellFormatting += gridShifts_CellFormatting;
             // 
             // tabPageHospital
             // 
