@@ -26,6 +26,7 @@ namespace MyScale.App.Pages
             CarregarDados();
         }
 
+        #region metodos
         private void CarregarDados()
         {
             try
@@ -74,7 +75,8 @@ namespace MyScale.App.Pages
                 label.Font = new Font(label.Font, FontStyle.Regular);
             }
         }
-
+        #endregion
+        #region eventos
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -177,5 +179,6 @@ namespace MyScale.App.Pages
                 }
             }
         }
+        #endregion
     }
 }

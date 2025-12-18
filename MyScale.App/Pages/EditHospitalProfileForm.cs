@@ -20,6 +20,7 @@ namespace MyScale.App.Pages
             pBoxEyeVisible.Visible = false;
             txtPassword.UseSystemPasswordChar = true;
         }
+        #region metodos
         private void CarregarDados()
         {
             try
@@ -57,6 +58,7 @@ namespace MyScale.App.Pages
                 MessageBox.Show($"Erro: {ex.Message}");
             }
         }
+        
         private void DefinirStatus(FoxLabel label, bool valido)
         {
             if (valido)
@@ -70,7 +72,8 @@ namespace MyScale.App.Pages
                 label.Font = new Font(label.Font, FontStyle.Regular);
             }
         }
-
+        #endregion
+        #region eventos
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -211,5 +214,6 @@ namespace MyScale.App.Pages
             pBoxEyeVisible.Visible = false;
             txtPassword.UseSystemPasswordChar = true;
         }
+        #endregion
     }
 }

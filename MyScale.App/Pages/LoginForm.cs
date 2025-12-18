@@ -39,7 +39,7 @@ namespace MyScale.App.Pages
             pBoxEyeVisible.Visible = false;
             txtPassword.UseSystemPasswordChar = true;
         }
-
+        #region metodos
         private void AbrirSistema()
         {
             if (ConfigureDI.ServiceProvider == null)
@@ -77,7 +77,8 @@ namespace MyScale.App.Pages
                 this.Close();
             }
         }
-
+        #endregion
+        #region eventos
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text.Trim();
@@ -155,6 +156,6 @@ namespace MyScale.App.Pages
             pBoxEyeVisible.Visible = false;
             txtPassword.UseSystemPasswordChar = true;
         }
-
+        #endregion
     }
 }

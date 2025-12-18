@@ -4,7 +4,6 @@ namespace MyScale.App
 {
     public static class GlobalSession
     {
-        
         public static LoggedUser? UsuarioLogado { get; set; }
 
         public static int UserId => UsuarioLogado?.Id ?? 0;

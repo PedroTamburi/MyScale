@@ -147,6 +147,7 @@
             gridShifts.AllowUserToResizeRows = false;
             gridShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
+            gridShifts.BorderStyle = BorderStyle.None;
             gridShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -193,10 +194,10 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(gridMyShifts);
-            tabPage1.Location = new Point(4, 38);
+            tabPage1.Location = new Point(4, 35);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1289, 769);
+            tabPage1.Size = new Size(1289, 772);
             tabPage1.TabIndex = 2;
             tabPage1.Text = "Meus Plantões";
             tabPage1.UseVisualStyleBackColor = true;
@@ -209,6 +210,7 @@
             gridMyShifts.AllowUserToResizeRows = false;
             gridMyShifts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridMyShifts.BackgroundColor = Color.FromArgb(255, 255, 255);
+            gridMyShifts.BorderStyle = BorderStyle.None;
             gridMyShifts.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             gridMyShifts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -248,7 +250,7 @@
             gridMyShifts.RowHeadersVisible = false;
             gridMyShifts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             gridMyShifts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridMyShifts.Size = new Size(1283, 763);
+            gridMyShifts.Size = new Size(1283, 766);
             gridMyShifts.TabIndex = 1;
             gridMyShifts.CellDoubleClick += gridMyShifts_CellDoubleClick;
             // 

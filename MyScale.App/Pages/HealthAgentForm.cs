@@ -3,6 +3,7 @@ using MyScale.Domain.Base;
 using MyScale.Domain.Entities;
 using MyScale.Domain.Interfaces;
 using MyScale.Repository.Repository;
+using MyScale.App.ViewModel;
 using ReaLTaiizor.Forms;
 using System.Xml;
 
@@ -33,6 +34,7 @@ namespace MyScale.App.Pages
                 CarregarPlantoesDisponiveis();
             }
         }
+
         #region plantoes disponiveis
         private void HealthAgentForm_Load(object sender, EventArgs e)
         {
@@ -282,7 +284,6 @@ namespace MyScale.App.Pages
             }
         }
         #endregion
-
 
         private void gridMyShifts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

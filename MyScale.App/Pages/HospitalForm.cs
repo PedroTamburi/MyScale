@@ -31,7 +31,7 @@ namespace MyScale.App.Pages
             _medicalShiftRepository = medicalShiftRepository;
         }
 
-        #region Métodos de Carregamento (LoadUser)
+        #region metodos de carregamento
 
         public void LoadUser()
         {
@@ -54,7 +54,7 @@ namespace MyScale.App.Pages
         }
         #endregion
 
-        #region Criar Plantão (Lógica do Calendário e Botão)
+        #region criar plantao
 
         private void btnCalendario_Click(object sender, EventArgs e)
         {
@@ -134,7 +134,7 @@ namespace MyScale.App.Pages
         }
         #endregion
 
-        #region Consultar Plantões (Grid)
+        #region consultar plantoes
 
         private void CarregarPlantoesHospital()
         {
@@ -250,7 +250,7 @@ namespace MyScale.App.Pages
         }
         #endregion
 
-        #region Perfil do Hospital
+        #region perfil hospital
 
         private void CarregarDadosPerfil()
         {

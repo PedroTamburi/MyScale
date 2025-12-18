@@ -13,7 +13,6 @@ namespace MyScale.App.Pages
         private readonly IMedicalShiftRepository _repository;
         private MedicalShift _plantaoAtual;
 
-        // Construtor recebe o ID e o Repositório
         public ShiftInformationForm(int shiftId, IMedicalShiftRepository repository)
         {
             InitializeComponent();
@@ -22,7 +21,7 @@ namespace MyScale.App.Pages
 
             CarregarDados();
         }
-
+        #region metodos
         private void CarregarDados()
         {
             try
@@ -65,7 +64,8 @@ namespace MyScale.App.Pages
                 MessageBox.Show("Erro ao carregar dados: " + ex.Message);
             }
         }
-
+        #endregion
+        #region eventos
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -98,5 +98,6 @@ namespace MyScale.App.Pages
                 }
             }
         }
+        #endregion
     }
 }
