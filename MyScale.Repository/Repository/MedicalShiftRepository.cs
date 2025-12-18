@@ -13,22 +13,27 @@ namespace MyScale.Repository.Repository
         {
             _context = context;
         }
-
-        public async Task<int> AddAsync(MedicalShift medicalShift)
+        // retorna os plantoes de um hospital especifico ordenado pela data de inicio 
+        public List<MedicalShift> GetByHospitalId(int hospitalId)
         {
-            await _context.MedicalShifts.AddAsync(medicalShift);
-            await _context.SaveChangesAsync();
-            return medicalShift.Id;
+            return _context.Set<MedicalShift>()
+                .Include(x => x.HealthAgent)
+                .Where(p => p.HospitalId == hospitalId)
+                .OrderByDescending(p => p.StartTime)
+                .ToList();
         }
+
+        // verifica se tem conflito de horario p um agente de saude em um dia especifico
         public bool HasTimeConflict(int agentId, DateOnly date, DateTime newStart, DateTime newEnd)
         {
+            
             var plantoesDoDia = _context.Set<MedicalShift>()
                 .Where(shift =>
                     shift.HealthAgentId == agentId &&
                     shift.Date == date &&
                     shift.Id != 0)
                 .ToList(); 
-
+            
             bool temConflito = plantoesDoDia.Any(shift =>
                 newStart.TimeOfDay < shift.EndTime.TimeOfDay &&
                 newEnd.TimeOfDay > shift.StartTime.TimeOfDay
@@ -36,37 +41,32 @@ namespace MyScale.Repository.Repository
 
             return temConflito;
         }
+        // libera todos os plantoes ligados a um agente de saude
         public void ReleaseShiftsByAgentId(int agentId)
         {
             var shifts = _context.Set<MedicalShift>()
                 .Where(x => x.HealthAgentId == agentId)
                 .ToList();
-            
+
             foreach (var shift in shifts)
             {
-                shift.HealthAgentId = null; 
+                shift.HealthAgentId = null;
             }
 
             _context.SaveChanges();
         }
+
+        // retorna os plantoes de um agente especifico
         public List<MedicalShift> GetByHealthAgentId(int healthAgentId)
         {
             return _context.Set<MedicalShift>()
-                .Include(x => x.Hospital) 
-                .Where(x => x.HealthAgentId == healthAgentId) 
+                .Include(x => x.Hospital)
+                .Where(x => x.HealthAgentId == healthAgentId)
                 .OrderBy(x => x.Date)
                 .ToList();
         }
-        // buscar lista de plantões de um hospital específico
-        public async Task<List<MedicalShift>> GetByHospitalIdAsync(int hospitalId)
-        {
-            return await _context.MedicalShifts
-                .Where(p => p.HospitalId == hospitalId)
-                .OrderByDescending(p => p.StartTime)
-                .ToListAsync();
-        }
 
-        // buscar plantões disponíveis para o Agente
+        // retorna os plantoes disp (onde healthAgentId é null)
         public List<MedicalShift> GetAvailableShifts()
         {
             return _context.Set<MedicalShift>()
@@ -75,7 +75,8 @@ namespace MyScale.Repository.Repository
                 .OrderBy(x => x.Date)
                 .ToList();
         }
-        // aceitar plantao pelo agente de saude
+
+        // aceita um plantao por um agente de saude
         public void AcceptShift(int shiftId, int healthAgentId)
         {
             var shift = _context.Set<MedicalShift>().Find(shiftId);
@@ -83,34 +84,8 @@ namespace MyScale.Repository.Repository
             if (shift != null)
             {
                 shift.HealthAgentId = healthAgentId;
-
                 _context.Update(shift);
                 _context.SaveChanges();
-            }
-        }
-
-        // buscar um plantão específico para editar
-        public async Task<MedicalShift> GetByIdAsync(int id)
-        {
-            return await _context.MedicalShifts.FindAsync(id);
-        }
-
-        // salva as alterações no banco
-        public async Task UpdateAsync(MedicalShift medicalShift)
-        {
-            _context.MedicalShifts.Update(medicalShift);
-            await _context.SaveChangesAsync();
-        }
-
-        // deleta plantao
-        public async Task DeleteAsync(int id)
-        {
-            var plantao = await _context.MedicalShifts.FindAsync(id);
-            if (plantao != null)
-            {
-                _context.MedicalShifts.Remove(plantao);
-
-                await _context.SaveChangesAsync();
             }
         }
     }

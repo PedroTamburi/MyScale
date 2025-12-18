@@ -5,9 +5,8 @@ namespace MyScale.Domain.Interfaces
 {
     public interface IMedicalShiftRepository : IBaseRepository<MedicalShift>
     {
-        Task<int> AddAsync(MedicalShift medicalShift); // retirar
 
-        Task<List<MedicalShift>> GetByHospitalIdAsync(int hospitalId); // deixar
+        List<MedicalShift> GetByHospitalId(int hospitalId); // deixar
 
         bool HasTimeConflict(int agentId, DateOnly date, DateTime newStart, DateTime newEnd); // deixar
 
@@ -18,11 +17,6 @@ namespace MyScale.Domain.Interfaces
         List<MedicalShift> GetAvailableShifts(); // deixar
 
         void AcceptShift(int shiftId, int healthAgentId); // deixar
-
-        Task<MedicalShift> GetByIdAsync(int id); // retirar
-        Task UpdateAsync(MedicalShift medicalShift); // retirar
-        Task DeleteAsync(int id); // retirar
-
     }
     }
 
